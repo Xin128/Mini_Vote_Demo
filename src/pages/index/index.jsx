@@ -30,7 +30,7 @@ export default class Index extends Component {
       downPullStyle: {
         height: 0 + 'px'
       },
-      downPullText: '下拉刷新',
+      downPullText: '正在疯狂刷新哟',
       creState: {},
       pullState: 0, //刷新状态 0不做操作 1刷新 -1加载更多
       status: 'more'
@@ -69,9 +69,9 @@ export default class Index extends Component {
   componentWillMount () { }
 
   componentDidMount () {
-    this.getFocusList();
-    this.getRecommendList();
-    this.getHotList();
+    // this.getFocusList();
+    // this.getRecommendList();
+    // this.getHotList();
    }
 
   componentWillUnmount () { }
@@ -84,8 +84,8 @@ export default class Index extends Component {
     navigationBarTitleText: '首页'
   }
   
-   // 切换tabs标签页
-   setActive = index => {
+  // 切换tabs标签页
+  setActive = index => {
     let that = this;
     // 获取当前点击的index索引值
     that.setState({
@@ -115,9 +115,8 @@ export default class Index extends Component {
     const scrollAnimation = true;
 
     return (
-      <View className='index'>
-        <View className="container">
-           <View className="search-wrap">
+      <View className="container">
+          <View className="search-wrap">
             {/* 搜索栏 */}
             <SearchInput
               ref="searchRef"
@@ -159,68 +158,130 @@ export default class Index extends Component {
             />
           </View>
         </View> */}
+        <AtTabs className="tab-wrap" current={isActive} tabList={tabList} onClick={this.setActive}>
+        {/* 推荐 page */}
+          <AtTabsPane current={isActive} index={0}>
+              <Text>测试推荐是否好用</Text>
+              <View className="dragUpdatePage">
+                <View className="downDragBox" style={downPullStyle}>
+                  <AtActivityIndicator content={downPullText} />
+                </View>
+                <ScrollView
+                  style={dragStyle}
+                  scrollY={scrollY}
+                  className={'tab-container ' + (isActive == 0 ? 'show' : 'hide')}
+                  upperThreshold={Threshold}
+                  lowerThreshold={Threshold}
+                  onTouchStart={this.touchStart}
+                  onTouchMove={this.touchRecMove}
+                  onTouchEnd={this.touchEnd}
+                  onScrollToUpper={this.getRecommendList}
+                  onScrollToLower={this.onReachBottom}
+                  scrollWithAnimation={scrollAnimation}>
 
-        <AtTabsPane current={isActive} index={0}>
+                  <View className="tab-content">
+                    {recList.map((item, index) => {
+                      return (
+                        <View className="tab-content-recommend" key={index}>
+                          <View className="content-category">
+                            <Image className="category-avatar" src={item.avatar} />
+                            <Text className="category-title">{item.author}</Text>
+                          </View>
+                          <View
+                            className="recommend-title"
+                            data-id={item.id}
+                            data-title={item.title}
+                            onClick={this.goTitleDetail}>
+                            {item.title}
+                          </View>
+                          <View
+                            className="recommend-content"
+                            data-id={item.id}
+                            data-title={item.title}
+                            data-avatar={item.avatar}
+                            data-content={item.fineAnswer.content}
+                            data-like={item.fineAnswer.like}
+                            data-time={item.fineAnswer.time}
+                            data-comment={item.fineAnswer.comment}
+                            onClick={this.goContentDetail}>
+                            {item.fineAnswer.content}
+                          </View>
+
+                          <View className="recommend-footer">
+                            <View className="recommend-footer-text">
+                              <Text>
+                                {item.fineAnswer.like +
+                                  (item.from == 'live' ? '感兴趣' : '赞同') +
+                                  ' · ' +
+                                  item.fineAnswer.comment +
+                                  (item.from == 'live' ? '人参与' : '评论')}
+                              </Text>
+                              {item.from && <Text>{'· ' + footerTip[item.from]}</Text>}
+                            </View>
+                          </View>
+                        </View>
+                      );
+                    })}
+                  </View>
+
+                  <View className="upDragBox">
+                    <AtLoadMore
+                      status={status}
+                      moreText="查看数据"
+                      loadingText="数据加载中..."
+                      noMoreText="没有更多了"
+                      noMoreTextStyle={{
+                        border: 'none'
+                      }}
+                      moreBtnStyle={{
+                        border: 'none'
+                      }}
+                    />
+                  </View>
+                </ScrollView>
+              </View>
+            </AtTabsPane>
+
+            <AtTabsPane current={isActive} index={1}>
             <View className="dragUpdatePage">
               <View className="downDragBox" style={downPullStyle}>
                 <AtActivityIndicator content={downPullText} />
               </View>
+              <Text>测试热榜是否好用</Text>
               <ScrollView
                 style={dragStyle}
                 scrollY={scrollY}
-                className={'tab-container ' + (isActive == 0 ? 'show' : 'hide')}
+                className={'tab-container ' + (isActive == 2 ? 'show' : 'hide')}
+                onTouchStart={this.touchStart}
+                onTouchMove={this.touchHotMove}
+                onTouchEnd={this.touchEnd}
                 upperThreshold={Threshold}
                 lowerThreshold={Threshold}
-                onTouchStart={this.touchStart}
-                onTouchMove={this.touchRecMove}
-                onTouchEnd={this.touchEnd}
-                onScrollToUpper={this.getRecommendList}
+                onScrollToUpper={this.getHotList}
                 onScrollToLower={this.onReachBottom}
                 scrollWithAnimation={scrollAnimation}>
                 <View className="tab-content">
-                  {recList.map((item, index) => {
+                  {hotList.map((item, index) => {
                     return (
-                      <View className="tab-content-recommend" key={index}>
-                        <View className="content-category">
-                          <Image className="category-avatar" src={item.avatar} />
-                          <Text className="category-title">{item.author}</Text>
+                      <View className="at-row tab-content-hot" key={index}>
+                        <View className="at-col at-col-1">
+                          <Text className={'hot-index ' + (index < 3 ? 'hot-index-hot' : '')}>
+                            {index + 1}
+                          </Text>
                         </View>
-                        <View
-                          className="recommend-title"
-                          data-id={item.id}
-                          data-title={item.title}
-                          onClick={this.goTitleDetail}>
-                          {item.title}
-                        </View>
-                        <View
-                          className="recommend-content"
-                          data-id={item.id}
-                          data-title={item.title}
-                          data-avatar={item.avatar}
-                          data-content={item.fineAnswer.content}
-                          data-like={item.fineAnswer.like}
-                          data-time={item.fineAnswer.time}
-                          data-comment={item.fineAnswer.comment}
-                          onClick={this.goContentDetail}>
-                          {item.fineAnswer.content}
-                        </View>
-                        <View className="recommend-footer">
-                          <View className="recommend-footer-text">
-                            <Text>
-                              {item.fineAnswer.like +
-                                (item.from == 'live' ? '感兴趣' : '赞同') +
-                                ' · ' +
-                                item.fineAnswer.comment +
-                                (item.from == 'live' ? '人参与' : '评论')}
-                            </Text>
-                            {item.from && <Text>{'· ' + footerTip[item.from]}</Text>}
+                        <View className="at-col at-col-8 at-col--wrap">
+                          <Text className="hot-title">{item.title}</Text>
+                          <View className="hot-footer-text">
+                            <Text>{item.comment + '回答 · ' + item.focus + '关注'}</Text>
                           </View>
+                        </View>
+                        <View className="at-col at-col-3">
+                          <Image className="hot-image" src={item.image} />
                         </View>
                       </View>
                     );
                   })}
                 </View>
-
                 <View className="upDragBox">
                   <AtLoadMore
                     status={status}
@@ -238,7 +299,8 @@ export default class Index extends Component {
               </ScrollView>
             </View>
           </AtTabsPane>
-      </View>
+
+        </AtTabs>
     </View>
   )
   }
