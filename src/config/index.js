@@ -7,4 +7,4 @@
  * @LastEditTime: 2019-08-19 13:19:32
  */
 
-export const BASE_URL = 'https://mock.ikmoons.com/mock/11/applet';
+export const BASE_URL = 'http://127.0.0.1:3000/mock/11/userInfo';

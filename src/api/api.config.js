@@ -8,7 +8,7 @@
  */
 
 import Taro from '@tarojs/taro';
-import { BASE_URL } from '../../config/index';
+// import { BASE_URL } from '../../config/index';
 import qs from 'qs';
 
 /**
@@ -25,6 +25,8 @@ const checkSuccess = (res, resolve) => {
     throw new Error(`网络请求错误，状态码${statusCode}`);
   }
 };
+
+const BASE_URL = 'http://127.0.0.1:3000/mock/11/userInfo'
 
 /**
  * 请求错误处理
