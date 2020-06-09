@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
-import { AtAvatar, AtList, AtListItem, AtIcon } from 'taro-ui';
+import { AtAvatar, AtList, AtListItem, AtIcon, AtAccordion } from 'taro-ui';
 import { Block, View, Text } from '@tarojs/components'
 import './userCenter.scss'
 
@@ -13,8 +13,20 @@ export default class Usercenter extends Component {
          askedQuestion: ["疫情期间，留学生要不要回国？", "程序员面试需要刷leetcode吗?", "疫情期间，能点外卖吗?"]
         //  "votedQuestion": {}
         },
-        test: ["疫情期间，留学生要不要回国？", "程序员面试需要刷leetcode吗?", "疫情期间，能点外卖吗?"]
+        test: ["疫情期间，留学生要不要回国？", "程序员面试需要刷leetcode吗?", "疫情期间，能点外卖吗?"],
+        openQuestion: false,
+        openVote: false
     }
+  }
+  handleClickQuestion (value) {
+    this.setState({
+      openQuestion: value
+    })
+  }
+  handleClickVote (value) {
+    this.setState({
+      openVote: value
+    })
   }
 
   componentWillMount () { }
@@ -39,7 +51,7 @@ export default class Usercenter extends Component {
     } = this.state;
     return (
       <View className='userCenter'>
-        <View className="container">
+        <View className="info-component">
           <View className="userinfo">
             <View className="userinfo-avatar">
               <AtAvatar circle image='https://jdc.jd.com/img/200' size="large" ></AtAvatar>
@@ -58,53 +70,45 @@ export default class Usercenter extends Component {
                 </View>
             </View>
           </View>
-          <View className="vote">
+        </View>
+
+        <View className="asked">
+          <AtAccordion open={this.state.openQuestion}
+                      onClick={this.handleClickQuestion.bind(this)}
+                      title='我的问题'
+                      hasBorder='true'
+          > 
+          <AtList hasBorder={false}>
           {test.length > 0 && (
           test.map((item) => {
             console.log(item);
               return (
-              <Text>{item}</Text>
-
-                  //     <View className="tab-content-recommend" key={index}>
-                  //       <View className="content-category">
-                  //         <Image className="category-avatar" src={item.avatar} />
-                  //         <Text className="category-title">{item.author}</Text>
-                  //       </View>
-                  //       <View
-                  //         className="recommend-title"
-                  //         data-id={item.id}
-                  //         data-title={item.title}
-                  //         onClick={this.goTitleDetail}>
-                  //         {item.title}
-                  //       </View>
-                  //       <View
-                  //         className="recommend-content"
-                  //         data-id={item.id}
-                  //         data-title={item.title}
-                  //         data-avatar={item.avatar}
-                  //         data-content={item.fineAnswer.content}
-                  //         data-like={item.fineAnswer.like}
-                  //         data-time={item.fineAnswer.time}
-                  //         data-comment={item.fineAnswer.comment}
-                  //         onClick={this.goContentDetail}>
-                  //         {item.fineAnswer.content}
-                  //       </View>
-                  //       <View className="recommend-footer">
-                  //         <View className="recommend-footer-text">
-                  //           <Text>
-                  //             {item.fineAnswer.like +
-                  //               (item.from == 'live' ? '感兴趣' : '赞同') +
-                  //               ' · ' +
-                  //               item.fineAnswer.comment +
-                  //               (item.from == 'live' ? '人参与' : '评论')}
-                  //           </Text>
-                  //           {item.from && <Text>{'· ' + footerTip[item.from]}</Text>}
-                  //         </View>
-                  //       </View>
-                  //     </View>
-                    );
-                  })
-          )}
+                <AtListItem
+                    title={item}
+                    arrow='right'
+                    thumb='https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png'
+                />);
+                }))}
+          </AtList>
+          </AtAccordion>
+          <AtAccordion open={this.state.openVote}
+                      onClick={this.handleClickVote.bind(this)}
+                      title='我的投票'
+                      hasBorder='true'
+          > 
+          <AtList hasBorder={false}>
+          {test.length > 0 && (
+          test.map((item) => {
+            console.log(item);
+              return (
+                <AtListItem
+                    title={item}
+                    arrow='right'
+                    thumb='https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png'
+                />);
+                }))}
+          </AtList>
+          </AtAccordion>
           </View>
           
           {test.length == 0 && (
@@ -114,7 +118,6 @@ export default class Usercenter extends Component {
                 </View>
               )}
         </View>
-      </View>
     )
   }
 }
