@@ -351,19 +351,14 @@ class Index extends Component {
   };
 
   goTitleDetail = event => {
-    console.log(event.target);
     Taro.navigateTo({
-      url:
-        '../../pages/vote/pollDetail?question_id='+
-        event.currentTarget.dataset.Questions_id + 
-        "&title=" + 
-        event.currentTarget.dataset.quetionTitle
+      url:'../../pages/vote/pollDetail?question_id='+event.target.dataset.id
     });
   };
   goContentDetail = event => {
     Taro.navigateTo({
       url:
-        '../../pages/contentDetail/contentDetail?id=' +
+        '/pages/vote/pollDetail?id=' +
         event.target.dataset.id +
         '&title=' +
         event.target.dataset.title +
@@ -525,7 +520,6 @@ class Index extends Component {
                         <View
                           className="recommend-title"
                           data-id={item.id}
-                          data-title={item.title}
                           onClick={this.goTitleDetail}>
                           {item.title}
                         </View>
@@ -596,14 +590,16 @@ class Index extends Component {
                 {
                   hotList.map((item, index) => {
                     return (
-                      <View className="at-row tab-content-hot" key={index} onClick={this.goTitleDetail}>>
+                      <View className="at-row tab-content-hot" key={index} >>
                         <View className="at-col at-col-1">
                           <Text className={'hot-index ' + (index < 2 ? 'hot-index-hot' : '')}>
                             {index + 1}
                           </Text>
                         </View>
                         <View className="at-col at-col-12 at-col--wrap">
-                          <Text className="hot-title">{item.quetionTitle}</Text>
+                          <Text className="hot-title" data-id={item.Questions_id} data-title={item.quetionTitle} onClick={this.goTitleDetail}>
+                            {item.quetionTitle}
+                          </Text>
                           <View className="hot-footer-text">
                             <Text>{ Math.floor(Math.random()) + '回答 · ' + Math.floor(Math.random()) + '关注'}</Text>
                           </View>

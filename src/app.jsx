@@ -24,7 +24,8 @@ class App extends Component {
     pages: [
       'pages/index/index',
       'pages/vote/vote',
-      'pages/userCenter/userCenter'
+      'pages/userCenter/userCenter',
+      'pages/vote/pollDetail'
 
    
     ],

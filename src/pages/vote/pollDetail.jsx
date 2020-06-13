@@ -38,20 +38,21 @@ export default class Polldetail extends Component {
     // console.log(e)
   }
   componentWillMount(options = this.$router.params) {
-    console.log(options);
-    let that = this;
-    that.setState({
+    console.log(options.question_id);
+    this.setState({
       questionId:options.question_id
     });
     console.log("already set state");
     console.log(this.state.questionId);
+
+    // TODO: actual set the state
   }
-  
+
   componentDidMount() {
-    console.log(questionLst);
-    console.log(questionId);
+    console.log("actaully set?");
+
     this.setState({
-      questionTitle: questionLst[this.state.questionId].Questions_id 
+      questionTitle: questionLst[this.state.questionId].questionTitle 
     })
    }
 
