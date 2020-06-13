@@ -1,20 +1,20 @@
 var questionLst = [
-    {
-        "Questions_id": "要求同user_id",
-        "quetionTitle": "有字符限制，请在列完问题后告诉我们",
-        "detailedInfo": "有字符限制，请在列完问题后告诉我们",
-        "question_status": "0:completed; 1:ongoing; -1: closed",
-        "comment": "example format: {1: [\"对！同意”， “我会选A！”]; 0: [\"我选B理由是xxxx“， ”坚决选B“]; -1: [\"我就是来打个酱油……“]}",
-        "comment_refer": "example format: {1: [3, 4]; 0: [5,6]; -1: [2]} 对应 comment 表格里面的id和内容",
-        "Anonymous？": "1: 匿名 0 ：不匿名",
-        "numReply": "真实即可，volts数根据你们的mechanism来定，一定要给一个热度表",
-        "ResultA": "人数",
-        "ResultB": "人数",
-        "ResultC": "人数",
-        "totalResult": "总人数",
-        "dateAsked": "评论时间：最少精确到小时 format：“2017-02-08T12:10:40.787”  时间和分钟可以写成00",
-        "timeLimit": "format: 00:01:30  表示零天一个小时30min"
-    },
+    // {
+    //     "Questions_id": "要求同user_id",
+    //     "quetionTitle": "有字符限制，请在列完问题后告诉我们",
+    //     "detailedInfo": "有字符限制，请在列完问题后告诉我们",
+    //     "question_status": "0:completed; 1:ongoing; -1: closed",
+    //     "comment": "example format: {1: [\"对！同意”， “我会选A！”]; 0: [\"我选B理由是xxxx“， ”坚决选B“]; -1: [\"我就是来打个酱油……“]}",
+    //     "comment_refer": "example format: {1: [3, 4]; 0: [5,6]; -1: [2]} 对应 comment 表格里面的id和内容",
+    //     "Anonymous？": "1: 匿名 0 ：不匿名",
+    //     "numReply": "真实即可，volts数根据你们的mechanism来定，一定要给一个热度表",
+    //     "ResultA": "人数",
+    //     "ResultB": "人数",
+    //     "ResultC": "人数",
+    //     "totalResult": "总人数",
+    //     "dateAsked": "评论时间：最少精确到小时 format：“2017-02-08T12:10:40.787”  时间和分钟可以写成00",
+    //     "timeLimit": "format: 00:01:30  表示零天一个小时30min"
+    // },
     {
         "Questions_id": "1",
         "quetionTitle": "疫情期间，留学生要不要回国？               \n\n\n\n                   \n\n\n\n",

@@ -1,6 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, AtInput, AtButton } from '@tarojs/components'
 import './pollDetail.scss'
+import {questionLst, userList} from '../data/question.js';
 
 export default class Polldetail extends Component {
 
@@ -8,7 +9,7 @@ export default class Polldetail extends Component {
     super(...arguments);
     this.state = {
       questionId: 3,
-      questionTitle: "leetcode yao shua ma",
+      questionTitle: "",
       detailedInfo: "invited to interview by alibaba and bytedance",
       options: [["shua", 3], ["bushua", 6], ["shuayidian", 1]],
       totalVotes: 10,
@@ -19,7 +20,7 @@ export default class Polldetail extends Component {
       askedUserId: 6,
       answered: false,
       selected: -1,
-      ownComment: ""
+      ownComment: "",
     }
   }
   chooseVote = e => {
@@ -36,10 +37,23 @@ export default class Polldetail extends Component {
   updateOwnComment = e => {
     // console.log(e)
   }
-  componentWillMount(options = this.$router.params || {}) {
-    // console.log(options)
+  componentWillMount(options = this.$router.params) {
+    console.log(options);
+    let that = this;
+    that.setState({
+      questionId:options.question_id
+    });
+    console.log("already set state");
+    console.log(this.state.questionId);
   }
-  componentDidMount() { }
+  
+  componentDidMount() {
+    console.log(questionLst);
+    console.log(questionId);
+    this.setState({
+      questionTitle: questionLst[this.state.questionId].Questions_id 
+    })
+   }
 
   componentWillUnmount() { }
 
