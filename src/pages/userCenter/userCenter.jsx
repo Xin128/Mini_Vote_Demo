@@ -2,22 +2,33 @@ import Taro, { Component } from '@tarojs/taro'
 import { AtAvatar, AtList, AtListItem, AtIcon, AtAccordion } from 'taro-ui';
 import { Block, View, Text } from '@tarojs/components'
 import './userCenter.scss'
+import {questionLst, userList} from '../data/question.js';
 
 export default class Usercenter extends Component {
   constructor() {
     super(...arguments);
     this.state = {
-       userInfo : { 
-        userId: 1,
-        userName: "Ricky",
-         askedQuestion: ["疫情期间，留学生要不要回国？", "程序员面试需要刷leetcode吗?", "疫情期间，能点外卖吗?"]
-        //  "votedQuestion": {}
-        },
-        test: ["疫情期间，留学生要不要回国？", "程序员面试需要刷leetcode吗?", "疫情期间，能点外卖吗?"],
+        userInfo: userList[Math.floor(Math.random() * userList.length)],
+        userAskedQuestion: [],
+        questionLst:questionLst,
         openQuestion: false,
         openVote: false
     }
   }
+
+   // 获得推荐列表API
+   getUserAskedQuestionList = () => {
+    // console.log(this.state.userAskedQuestion);
+    // console.log(questionLst);
+    // console.log(Array.from(this.state.userAskedQuestion, 
+    //   idx => this.state.questionLst[idx]));
+    
+    this.setState({
+      userAskedQuestion: Array.from(this.state.userAskedQuestion, 
+        idx => this.state.questionLst[idx])
+    });
+  };
+
   handleClickQuestion (value) {
     this.setState({
       openQuestion: value
@@ -31,7 +42,15 @@ export default class Usercenter extends Component {
 
   componentWillMount () { }
 
-  componentDidMount () { }
+  componentDidMount () {
+    this.setState({
+      userAskedQuestion: Array.from(this.state.userInfo.askekQuestionID),
+      detailedInfo:this.state.userInfo.detailedInfo,
+      userName: this.state.userInfo.userName
+    });
+    // console.log(this.state.userAskedQuestion);
+
+   }
 
   componentWillUnmount () { }
 
@@ -45,9 +64,12 @@ export default class Usercenter extends Component {
 
     
   render () {
+    this.getUserAskedQuestionList();
     const {
       userInfo,
-      test
+      userAskedQuestion,
+      userName,
+      detailedInfo,
     } = this.state;
     return (
       <View className='userCenter'>
@@ -57,15 +79,14 @@ export default class Usercenter extends Component {
               <AtAvatar circle image='https://jdc.jd.com/img/200' size="large" ></AtAvatar>
             </View>
             <View>
-              <View className="userinfo-nickname">
-                Ricky Sun
+              <View className="userinfo-nickname">{userName}         
               </View>
               <View className="userinfo-pencil"> 
                 <AtIcon value='edit' size='20' color='#11040470' onClick={this.showQuesMask}>
               </AtIcon>
               </View>
               <View className="userinfo-tip"> 
-                  <Text> { "世界这么大, 我想去看看"}
+                  <Text> {detailedInfo}
                   </Text>
                 </View>
             </View>
@@ -79,16 +100,17 @@ export default class Usercenter extends Component {
                       hasBorder='true'
           > 
           <AtList hasBorder={false}>
-          {test.length > 0 && (
-          test.map((item) => {
-            console.log(item);
+          {/* {test.length > 0 && ( */}
+          {userAskedQuestion.map((item) => {
               return (
                 <AtListItem
                     title={item}
                     arrow='right'
                     thumb='https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png'
                 />);
-                }))}
+                })
+                // )
+                }
           </AtList>
           </AtAccordion>
           <AtAccordion open={this.state.openVote}
@@ -97,21 +119,23 @@ export default class Usercenter extends Component {
                       hasBorder='true'
           > 
           <AtList hasBorder={false}>
-          {test.length > 0 && (
-          test.map((item) => {
-            console.log(item);
+          {
+          // userAskedQuestion.length > 0 && (
+          userAskedQuestion.map((item) => {
               return (
                 <AtListItem
                     title={item}
                     arrow='right'
                     thumb='https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png'
                 />);
-                }))}
+                })
+                // )
+                }
           </AtList>
           </AtAccordion>
           </View>
           
-          {test.length == 0 && (
+          {userAskedQuestion.length == 0 && (
                 <View>
                   <View className="to-recommend-title">还没提出问题</View>
                   <View className="to-recommend-tip">去提出新的问题吧</View>

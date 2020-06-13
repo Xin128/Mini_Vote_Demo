@@ -1,0 +1,27 @@
+<block wx:if="{{$taroCompReady}}">
+    <view class="search-component">
+        <view class="search-input market-class" bindtap="funPrivatebfczz">
+            <image class="search-input-icon" src="{{anonymousState__temp}}"></image><text class="search-input-text">搜索内容提问</text>
+        </view>
+        <view class="{{'search-mask ' + (show ? 'show' : 'hide')}}">
+            <view class="search-input-wrap">
+                <image class="search-mask-icon" src="{{anonymousState__temp2}}"></image>
+                <input class="search-mask-input market-class" type="text" confirm-type="search" focus="{{show}}" value="{{value}}" auto-focus="{{show}}" placeholder-style="color:#cdcdcd" placeholder="搜索想知道内容" bindconfirm="searchTopic" /><text class="search-mask-cancel" bindtap="funPrivatebfdzz">取消</text>
+            </view>
+            <block wx:if="{{historyList.length > 0}}">
+                <view class="search-history">
+                    <view class="search-history-title">搜索历史</view>
+                    <view class="search-item" wx:key="id" wx:for="{{loopArray180}}" wx:for-item="item" wx:for-index="index">
+                        <image class="search-icon-time" src="{{item.$loopState__temp4}}"></image><text class="search-item-text">{{item.$original}}</text>
+                        <image class="search-icon-del" data-index="{{index}}" bindtap="clearItem" src="{{item.$loopState__temp6}}"></image>
+                    </view>
+                    <block wx:if="{{historyList.length > 1}}">
+                        <view class="search-clear-all" bindtap="clearAll">
+                            <image class="search-del-all" src="{{anonymousState__temp7}}"></image><text class="search-del-text">清空搜索历史</text>
+                        </view>
+                    </block>
+                </view>
+            </block>
+        </view>
+    </view>
+</block>

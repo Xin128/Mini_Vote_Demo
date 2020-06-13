@@ -23,7 +23,7 @@ class App extends Component {
   config = {
     pages: [
       'pages/index/index',
-      'pages/vote/vote',
+      'pages/vote/pollDetail',
       'pages/userCenter/userCenter'
 
    
@@ -47,7 +47,7 @@ class App extends Component {
           selectedIconPath: 'assets/images/home-light.png'
         },
         {
-          pagePath: 'pages/vote/vote',
+          pagePath: 'pages/vote/pollDetail',
           text: '投票',
           iconPath: 'assets/images/auth-icon.png',
           selectedIconPath: 'assets/images/auth-icon.png'

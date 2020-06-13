@@ -36,7 +36,7 @@ export default class Vote extends Component {
     }));
   }
   onSubmit (event) {
-    console.log(this.state.value)
+    // console.log(this.state.value)
   }
   onReset (event) {
     this.setState({

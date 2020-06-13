@@ -1,0 +1,1 @@
+{"component":true,"usingComponents":{"at-form":"../../npm/taro-ui/dist/weapp/components/form/index","at-input":"../../npm/taro-ui/dist/weapp/components/input/index","at-switch":"../../npm/taro-ui/dist/weapp/components/switch/index","at-button":"../../npm/taro-ui/dist/weapp/components/button/index"},"navigationBarTitleText":"投票"}

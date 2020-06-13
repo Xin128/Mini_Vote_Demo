@@ -279,7 +279,7 @@ page {
 }
 
 .tab-content-hot {
-  height: auto;
+  height: 150px;
   margin-bottom: 2px;
 }
 
@@ -304,24 +304,24 @@ page {
 }
 
 .hot-title {
-  max-width: 630px;
+  max-width: 470px;
   display: -webkit-inline-box;
-  word-break: normal;
+  word-break: break-all;
   text-overflow: ellipsis;
   overflow: hidden;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   line-height: 1.6;
-  margin-right: 10px;
+  margin-right: 20px;
   margin-left: 10px;
-  //height: 110px;
+  height: 110px;
 }
 
-// .hot-image {
-//   width: 150px;
-//   height: 100px;
-//   border-radius: 10px;
-// }
+.hot-image {
+  width: 150px;
+  height: 100px;
+  border-radius: 10px;
+}
 
 .hot-footer-text {
   margin-left: 10px;

@@ -1,10 +1,15 @@
 import Taro, { Component } from "@tarojs/taro-h5";
+import 'taro-ui/dist/style/index.scss';
 
 
 import './app.scss';
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
+// if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5')  {
+//   require('nerv-devtools')
+// }
+
 import Nerv from 'nervjs';
 import { View, Tabbar, TabbarContainer, TabbarPanel } from '@tarojs/components';
 import { Router, createHistory, mountApis } from '@tarojs/router';

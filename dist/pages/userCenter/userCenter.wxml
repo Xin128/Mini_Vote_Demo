@@ -1,0 +1,37 @@
+<block wx:if="{{$taroCompReady}}">
+    <view class="userCenter">
+        <view class="info-component">
+            <view class="userinfo">
+                <view class="userinfo-avatar">
+                    <at-avatar compid="{{$compid__682}}"></at-avatar>
+                </view>
+                <view>
+                    <view class="userinfo-nickname">{{userName}}</view>
+                    <view class="userinfo-pencil">
+                        <at-icon compid="{{$compid__683}}"></at-icon>
+                    </view>
+                    <view class="userinfo-tip"> <text> {{detailedInfo}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="asked">
+            <at-accordion compid="{{$compid__684}}">
+                <at-list compid="{{$compid__685}}">
+                    <at-list-item wx:for="{{loopArray178}}" wx:for-item="item" wx:for-index="_anonIdx2" compid="{{item.$compid__680}}"></at-list-item>
+                </at-list>
+            </at-accordion>
+            <at-accordion compid="{{$compid__686}}">
+                <at-list compid="{{$compid__687}}">
+                    <at-list-item wx:for="{{loopArray179}}" wx:for-item="item" wx:for-index="_anonIdx4" compid="{{item.$compid__681}}"></at-list-item>
+                </at-list>
+            </at-accordion>
+        </view>
+        <block wx:if="{{userAskedQuestion.length == 0}}">
+            <view>
+                <view class="to-recommend-title">还没提出问题</view>
+                <view class="to-recommend-tip">去提出新的问题吧</view>
+            </view>
+        </block>
+    </view>
+</block>
