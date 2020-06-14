@@ -60,7 +60,7 @@ var AtLoadMore = (_temp2 = _class = function (_AtComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = AtLoadMore.__proto__ || Object.getPrototypeOf(AtLoadMore)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["_$anonymousState__temp", "anonymousState__temp2", "anonymousState__temp3", "$compid__29", "$compid__30", "status", "moreText", "noMoreText", "className", "customStyle", "loadingText", "moreBtnStyle", "noMoreTextStyle"], _this.customComponents = ["AtActivityIndicator", "AtButton"], _temp), _possibleConstructorReturn(_this, _ret);
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = AtLoadMore.__proto__ || Object.getPrototypeOf(AtLoadMore)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["_$anonymousState__temp", "anonymousState__temp2", "anonymousState__temp3", "$compid__44", "$compid__45", "status", "moreText", "noMoreText", "className", "customStyle", "loadingText", "moreBtnStyle", "noMoreTextStyle"], _this.customComponents = ["AtActivityIndicator", "AtButton"], _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(AtLoadMore, [{
@@ -86,15 +86,15 @@ var AtLoadMore = (_temp2 = _class = function (_AtComponent) {
       var __prefix = this.$prefix;
       ;
 
-      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__29"),
+      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__44"),
           _genCompid2 = _slicedToArray(_genCompid, 2),
-          $prevCompid__29 = _genCompid2[0],
-          $compid__29 = _genCompid2[1];
+          $prevCompid__44 = _genCompid2[0],
+          $compid__44 = _genCompid2[1];
 
-      var _genCompid3 = (0, _taroWeapp.genCompid)(__prefix + "$compid__30"),
+      var _genCompid3 = (0, _taroWeapp.genCompid)(__prefix + "$compid__45"),
           _genCompid4 = _slicedToArray(_genCompid3, 2),
-          $prevCompid__30 = _genCompid4[0],
-          $compid__30 = _genCompid4[1];
+          $prevCompid__45 = _genCompid4[0],
+          $compid__45 = _genCompid4[1];
 
       var _props = this.__props,
           className = _props.className,
@@ -111,13 +111,13 @@ var AtLoadMore = (_temp2 = _class = function (_AtComponent) {
         _taroWeapp.propsManager.set({
           "mode": "center",
           "content": loadingText
-        }, $compid__29, $prevCompid__29);
+        }, $compid__44, $prevCompid__44);
       } else if (status === 'more') {
         _taroWeapp.propsManager.set({
           "full": true,
           "onClick": this.onClick.bind(this),
           "customStyle": moreBtnStyle
-        }, $compid__30, $prevCompid__30);
+        }, $compid__45, $prevCompid__45);
       } else {
         _$anonymousState__temp = (0, _taroWeapp.internal_inline_style)(noMoreTextStyle);
       }
@@ -127,8 +127,8 @@ var AtLoadMore = (_temp2 = _class = function (_AtComponent) {
         _$anonymousState__temp: _$anonymousState__temp,
         anonymousState__temp2: anonymousState__temp2,
         anonymousState__temp3: anonymousState__temp3,
-        $compid__29: $compid__29,
-        $compid__30: $compid__30,
+        $compid__44: $compid__44,
+        $compid__45: $compid__45,
         status: status,
         moreText: moreText,
         noMoreText: noMoreText

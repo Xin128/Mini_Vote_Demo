@@ -9,9 +9,9 @@ export default class Polldetail extends Component {
     super(...arguments);
     this.state = {
       questionId: 3,
-      questionTitle: "",
-      detailedInfo: "invited to interview by alibaba and bytedance",
-      options: [["shua", 3], ["bushua", 6], ["shuayidian", 1]],
+      questionTitle: "研究生毕业，应该读博士吗",
+      detailedInfo: "马上12月研究生毕业，现在面临12月份毕业工作和申请明年21年的博士。本人对于科研并没有很高的热情，但是因为博士可以带来更高的起点和更好的职业道路，再加上因为疫情影响，现在找工作也比较困难，所以申请博士的念头冒了出来。可是心啊刚到博士四五年之后才能毕业，所以还是很纠结",
+      options: [["应该", 3], ["不应该", 6], ["不知道", 1]],
       totalVotes: 10,
       questionStatus: 1,
       comment: [["bi xu dei shua", 1], ["bie lang fei shi jian", 0], ["tong wen", 1]],

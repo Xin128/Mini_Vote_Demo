@@ -52,7 +52,7 @@ var Vote = (_temp2 = _class = function (_BaseComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Vote.__proto__ || Object.getPrototypeOf(Vote)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["loopArray176", "$compid__673", "$compid__674", "$compid__675", "$compid__676", "$compid__677", "$compid__678", "$compid__679", "options"], _this.config = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Vote.__proto__ || Object.getPrototypeOf(Vote)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["loopArray7", "$compid__28", "$compid__29", "$compid__30", "$compid__31", "$compid__32", "$compid__33", "$compid__34", "options"], _this.config = {
       navigationBarTitleText: '投票'
     }, _this.customComponents = ["AtForm", "AtInput", "AtSwitch", "AtButton"], _temp), _possibleConstructorReturn(_this, _ret);
   }
@@ -121,50 +121,50 @@ var Vote = (_temp2 = _class = function (_BaseComponent) {
       var __prefix = this.$prefix;
       ;
 
-      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__673"),
+      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__28"),
           _genCompid2 = _slicedToArray(_genCompid, 2),
-          $prevCompid__673 = _genCompid2[0],
-          $compid__673 = _genCompid2[1];
+          $prevCompid__28 = _genCompid2[0],
+          $compid__28 = _genCompid2[1];
 
-      var _genCompid3 = (0, _taroWeapp.genCompid)(__prefix + "$compid__674"),
+      var _genCompid3 = (0, _taroWeapp.genCompid)(__prefix + "$compid__29"),
           _genCompid4 = _slicedToArray(_genCompid3, 2),
-          $prevCompid__674 = _genCompid4[0],
-          $compid__674 = _genCompid4[1];
+          $prevCompid__29 = _genCompid4[0],
+          $compid__29 = _genCompid4[1];
 
-      var _genCompid5 = (0, _taroWeapp.genCompid)(__prefix + "$compid__675"),
+      var _genCompid5 = (0, _taroWeapp.genCompid)(__prefix + "$compid__30"),
           _genCompid6 = _slicedToArray(_genCompid5, 2),
-          $prevCompid__675 = _genCompid6[0],
-          $compid__675 = _genCompid6[1];
+          $prevCompid__30 = _genCompid6[0],
+          $compid__30 = _genCompid6[1];
 
-      var _genCompid7 = (0, _taroWeapp.genCompid)(__prefix + "$compid__676"),
+      var _genCompid7 = (0, _taroWeapp.genCompid)(__prefix + "$compid__31"),
           _genCompid8 = _slicedToArray(_genCompid7, 2),
-          $prevCompid__676 = _genCompid8[0],
-          $compid__676 = _genCompid8[1];
+          $prevCompid__31 = _genCompid8[0],
+          $compid__31 = _genCompid8[1];
 
-      var _genCompid9 = (0, _taroWeapp.genCompid)(__prefix + "$compid__677"),
+      var _genCompid9 = (0, _taroWeapp.genCompid)(__prefix + "$compid__32"),
           _genCompid10 = _slicedToArray(_genCompid9, 2),
-          $prevCompid__677 = _genCompid10[0],
-          $compid__677 = _genCompid10[1];
+          $prevCompid__32 = _genCompid10[0],
+          $compid__32 = _genCompid10[1];
 
-      var _genCompid11 = (0, _taroWeapp.genCompid)(__prefix + "$compid__678"),
+      var _genCompid11 = (0, _taroWeapp.genCompid)(__prefix + "$compid__33"),
           _genCompid12 = _slicedToArray(_genCompid11, 2),
-          $prevCompid__678 = _genCompid12[0],
-          $compid__678 = _genCompid12[1];
+          $prevCompid__33 = _genCompid12[0],
+          $compid__33 = _genCompid12[1];
 
-      var _genCompid13 = (0, _taroWeapp.genCompid)(__prefix + "$compid__679"),
+      var _genCompid13 = (0, _taroWeapp.genCompid)(__prefix + "$compid__34"),
           _genCompid14 = _slicedToArray(_genCompid13, 2),
-          $prevCompid__679 = _genCompid14[0],
-          $compid__679 = _genCompid14[1];
+          $prevCompid__34 = _genCompid14[0],
+          $compid__34 = _genCompid14[1];
 
-      var loopArray176 = this.__state.options.map(function (value, index) {
+      var loopArray7 = this.__state.options.map(function (value, index) {
         value = {
           $original: (0, _taroWeapp.internal_get_original)(value)
         };
 
-        var _genCompid15 = (0, _taroWeapp.genCompid)(__prefix + "behzzzzzzz" + index, true),
+        var _genCompid15 = (0, _taroWeapp.genCompid)(__prefix + "dzzzzzzzzz" + index, true),
             _genCompid16 = _slicedToArray(_genCompid15, 2),
-            $prevCompid__672 = _genCompid16[0],
-            $compid__672 = _genCompid16[1];
+            $prevCompid__27 = _genCompid16[0],
+            $compid__27 = _genCompid16[1];
 
         _taroWeapp.propsManager.set({
           "name": "value",
@@ -173,9 +173,9 @@ var Vote = (_temp2 = _class = function (_BaseComponent) {
           "placeholder": index,
           "value": value.$original,
           "onChange": _this2.handleChange.bind(_this2)
-        }, $compid__672, $prevCompid__672);
+        }, $compid__27, $prevCompid__27);
         return {
-          $compid__672: $compid__672,
+          $compid__27: $compid__27,
           $original: value.$original
         };
       });
@@ -183,7 +183,7 @@ var Vote = (_temp2 = _class = function (_BaseComponent) {
       _taroWeapp.propsManager.set({
         "onSubmit": this.onSubmit.bind(this),
         "onReset": this.onReset.bind(this)
-      }, $compid__673, $prevCompid__673);
+      }, $compid__28, $prevCompid__28);
       _taroWeapp.propsManager.set({
         "name": "value",
         "title": "\u6295\u7968\u6807\u9898",
@@ -191,7 +191,7 @@ var Vote = (_temp2 = _class = function (_BaseComponent) {
         "placeholder": "CS\u672C\u79D1Offer\u600E\u4E48\u9009",
         "value": this.__state.value,
         "onChange": this.handleChange.bind(this)
-      }, $compid__674, $prevCompid__674);
+      }, $compid__29, $prevCompid__29);
       _taroWeapp.propsManager.set({
         "name": "value",
         "title": "",
@@ -199,31 +199,31 @@ var Vote = (_temp2 = _class = function (_BaseComponent) {
         "placeholder": "\u8BE6\u7EC6\u95EE\u9898\u63CF\u8FF0",
         "value": this.__state.value,
         "onChange": this.handleChange.bind(this)
-      }, $compid__675, $prevCompid__675);
+      }, $compid__30, $prevCompid__30);
       _taroWeapp.propsManager.set({
         "title": "\u5141\u8BB8\u591A\u9009",
         "checked": this.__state.value,
         "onChange": this.handleChange
-      }, $compid__676, $prevCompid__676);
+      }, $compid__31, $prevCompid__31);
       _taroWeapp.propsManager.set({
         "type": "secondary",
         "onClick": this.handleAddOption.bind(this)
-      }, $compid__677, $prevCompid__677);
+      }, $compid__32, $prevCompid__32);
       _taroWeapp.propsManager.set({
         "formType": "submit"
-      }, $compid__678, $prevCompid__678);
+      }, $compid__33, $prevCompid__33);
       _taroWeapp.propsManager.set({
         "formType": "reset"
-      }, $compid__679, $prevCompid__679);
+      }, $compid__34, $prevCompid__34);
       Object.assign(this.__state, {
-        loopArray176: loopArray176,
-        $compid__673: $compid__673,
-        $compid__674: $compid__674,
-        $compid__675: $compid__675,
-        $compid__676: $compid__676,
-        $compid__677: $compid__677,
-        $compid__678: $compid__678,
-        $compid__679: $compid__679
+        loopArray7: loopArray7,
+        $compid__28: $compid__28,
+        $compid__29: $compid__29,
+        $compid__30: $compid__30,
+        $compid__31: $compid__31,
+        $compid__32: $compid__32,
+        $compid__33: $compid__33,
+        $compid__34: $compid__34
       });
       return this.__state;
     }

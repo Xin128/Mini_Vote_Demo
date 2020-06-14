@@ -3,12 +3,12 @@
         <view class="info-component">
             <view class="userinfo">
                 <view class="userinfo-avatar">
-                    <at-avatar compid="{{$compid__682}}"></at-avatar>
+                    <at-avatar compid="{{$compid__64}}"></at-avatar>
                 </view>
                 <view>
                     <view class="userinfo-nickname">{{userName}}</view>
                     <view class="userinfo-pencil">
-                        <at-icon compid="{{$compid__683}}"></at-icon>
+                        <at-icon compid="{{$compid__65}}"></at-icon>
                     </view>
                     <view class="userinfo-tip"> <text> {{detailedInfo}}</text>
                     </view>
@@ -16,14 +16,14 @@
             </view>
         </view>
         <view class="asked">
-            <at-accordion compid="{{$compid__684}}">
-                <at-list compid="{{$compid__685}}">
-                    <at-list-item wx:for="{{loopArray178}}" wx:for-item="item" wx:for-index="_anonIdx2" compid="{{item.$compid__680}}"></at-list-item>
+            <at-accordion compid="{{$compid__66}}">
+                <at-list compid="{{$compid__67}}">
+                    <at-list-item wx:for="{{loopArray18}}" wx:for-item="item" wx:for-index="_anonIdx2" compid="{{item.$compid__62}}"></at-list-item>
                 </at-list>
             </at-accordion>
-            <at-accordion compid="{{$compid__686}}">
-                <at-list compid="{{$compid__687}}">
-                    <at-list-item wx:for="{{loopArray179}}" wx:for-item="item" wx:for-index="_anonIdx4" compid="{{item.$compid__681}}"></at-list-item>
+            <at-accordion compid="{{$compid__68}}">
+                <at-list compid="{{$compid__69}}">
+                    <at-list-item wx:for="{{loopArray19}}" wx:for-item="item" wx:for-index="_anonIdx4" compid="{{item.$compid__63}}"></at-list-item>
                 </at-list>
             </at-accordion>
         </view>

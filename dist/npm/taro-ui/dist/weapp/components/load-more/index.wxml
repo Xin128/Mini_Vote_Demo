@@ -2,11 +2,11 @@
     <view class="{{anonymousState__temp2}}" style="{{anonymousState__temp3}}">
         <block>
             <block wx:if="{{status === 'loading'}}">
-                <at-activity-indicator compid="{{$compid__29}}"></at-activity-indicator>
+                <at-activity-indicator compid="{{$compid__44}}"></at-activity-indicator>
             </block>
             <block wx:elif="{{status === 'more'}}">
                 <view class="at-load-more__cnt">
-                    <at-button compid="{{$compid__30}}">{{moreText}}</at-button>
+                    <at-button compid="{{$compid__45}}">{{moreText}}</at-button>
                 </view>
             </block>
             <block wx:else><text class="at-load-more__tip" style="{{_$anonymousState__temp}}">{{noMoreText}}</text>

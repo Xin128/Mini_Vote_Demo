@@ -26,6 +26,8 @@ var _taroWeapp2 = _interopRequireDefault(_taroWeapp);
 
 __webpack_require__(/*! ./pollDetail.scss */ "./src/pages/vote/pollDetail.scss");
 
+var _question = __webpack_require__(/*! ../data/question */ "./src/pages/data/question.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -50,7 +52,7 @@ var Polldetail = (_temp2 = _class = function (_BaseComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Polldetail.__proto__ || Object.getPrototypeOf(Polldetail)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["loopArray181", "questionId", "questionTitle", "detailedInfo", "options", "totalVotes", "questionStatus", "comment", "dateAsked", "timeLimit", "askedUserId", "answered", "selected", "ownComment"], _this.chooseVote = function (e) {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Polldetail.__proto__ || Object.getPrototypeOf(Polldetail)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["loopArray15", "questionId", "questionTitle", "detailedInfo", "options", "totalVotes", "questionStatus", "comment", "dateAsked", "timeLimit", "askedUserId", "answered", "selected", "ownComment"], _this.chooseVote = function (e) {
       _this.setState(function (state, props) {
         var n = [].concat(_toConsumableArray(state.options));
         n[parseInt(e.currentTarget.id)][1] += 1;
@@ -72,9 +74,9 @@ var Polldetail = (_temp2 = _class = function (_BaseComponent) {
       _get(Polldetail.prototype.__proto__ || Object.getPrototypeOf(Polldetail.prototype), "_constructor", this).apply(this, arguments);
       this.state = {
         questionId: 3,
-        questionTitle: "leetcode yao shua ma",
-        detailedInfo: "invited to interview by alibaba and bytedance",
-        options: [["shua", 3], ["bushua", 6], ["shuayidian", 1]],
+        questionTitle: "研究生毕业，应该读博士吗",
+        detailedInfo: "马上12月研究生毕业，现在面临12月份毕业工作和申请明年21年的博士。本人对于科研并没有很高的热情，但是因为博士可以带来更高的起点和更好的职业道路，再加上因为疫情影响，现在找工作也比较困难，所以申请博士的念头冒了出来。可是心啊刚到博士四五年之后才能毕业，所以还是很纠结",
+        options: [["应该", 3], ["不应该", 6], ["不知道", 1]],
         totalVotes: 10,
         questionStatus: 1,
         comment: [["bi xu dei shua", 1], ["bie lang fei shi jian", 0], ["tong wen", 1]],
@@ -90,13 +92,26 @@ var Polldetail = (_temp2 = _class = function (_BaseComponent) {
   }, {
     key: "componentWillMount",
     value: function componentWillMount() {
-      // console.log(options)
+      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.$router.params;
 
-      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.$router.params || {};
+      console.log(options.question_id);
+      this.setState({
+        questionId: options.question_id
+      });
+      console.log("already set state");
+      console.log(this.state.questionId);
+
+      // TODO: actual set the state
     }
   }, {
     key: "componentDidMount",
-    value: function componentDidMount() {}
+    value: function componentDidMount() {
+      console.log("actaully set?");
+
+      this.setState({
+        questionTitle: _question.questionLst[this.state.questionId].questionTitle
+      });
+    }
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {}
@@ -117,7 +132,7 @@ var Polldetail = (_temp2 = _class = function (_BaseComponent) {
       var __prefix = this.$prefix;
       ;
 
-      var loopArray181 = this.__state.options.map(function (item, index) {
+      var loopArray15 = this.__state.options.map(function (item, index) {
         item = {
           $original: (0, _taroWeapp.internal_get_original)(item)
         };
@@ -131,7 +146,7 @@ var Polldetail = (_temp2 = _class = function (_BaseComponent) {
       });
 
       Object.assign(this.__state, {
-        loopArray181: loopArray181
+        loopArray15: loopArray15
       });
       return this.__state;
     }
@@ -217,4 +232,4 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ })
 
-},[["./src/pages/vote/pollDetail.jsx","runtime","taro","vendors"]]]);
+},[["./src/pages/vote/pollDetail.jsx","runtime","taro","vendors","common"]]]);

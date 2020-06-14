@@ -60,7 +60,7 @@ var AtActivityIndicator = (_temp2 = _class = function (_AtComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = AtActivityIndicator.__proto__ || Object.getPrototypeOf(AtActivityIndicator)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["$compid__28", "rootClass", "content", "color", "size", "mode", "isOpened", "className"], _this.customComponents = ["AtLoading"], _temp), _possibleConstructorReturn(_this, _ret);
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = AtActivityIndicator.__proto__ || Object.getPrototypeOf(AtActivityIndicator)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["$compid__43", "rootClass", "content", "color", "size", "mode", "isOpened", "className"], _this.customComponents = ["AtLoading"], _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(AtActivityIndicator, [{
@@ -79,10 +79,10 @@ var AtActivityIndicator = (_temp2 = _class = function (_AtComponent) {
       var __prefix = this.$prefix;
       ;
 
-      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__28"),
+      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__43"),
           _genCompid2 = _slicedToArray(_genCompid, 2),
-          $prevCompid__28 = _genCompid2[0],
-          $compid__28 = _genCompid2[1];
+          $prevCompid__43 = _genCompid2[0],
+          $compid__43 = _genCompid2[1];
 
       var _props = this.__props,
           color = _props.color,
@@ -98,9 +98,9 @@ var AtActivityIndicator = (_temp2 = _class = function (_AtComponent) {
       _taroWeapp.propsManager.set({
         "size": size,
         "color": color
-      }, $compid__28, $prevCompid__28);
+      }, $compid__43, $prevCompid__43);
       Object.assign(this.__state, {
-        $compid__28: $compid__28,
+        $compid__43: $compid__43,
         rootClass: rootClass,
         content: content
       });

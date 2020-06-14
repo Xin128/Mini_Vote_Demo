@@ -1,4 +1,5 @@
 require("./runtime");
+require("./common");
 require("./vendors");
 require("./taro");
 
@@ -57,7 +58,7 @@ var _App = function (_BaseComponent) {
     }
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = _App.__proto__ || Object.getPrototypeOf(_App)).call.apply(_ref, [this].concat(args))), _this), _this.config = {
-      pages: ['pages/index/index', 'pages/vote/pollDetail', 'pages/userCenter/userCenter'],
+      pages: ['pages/index/index', 'pages/vote/vote', 'pages/userCenter/userCenter', 'pages/vote/pollDetail'],
       window: {
         backgroundTextStyle: 'light',
         navigationBarBackgroundColor: '#fff',
@@ -75,7 +76,7 @@ var _App = function (_BaseComponent) {
           iconPath: 'assets/images/home.png',
           selectedIconPath: 'assets/images/home-light.png'
         }, {
-          pagePath: 'pages/vote/pollDetail',
+          pagePath: 'pages/vote/vote',
           text: '投票',
           iconPath: 'assets/images/auth-icon.png',
           selectedIconPath: 'assets/images/auth-icon.png'

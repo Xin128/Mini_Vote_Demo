@@ -601,7 +601,7 @@ class Index extends Component {
                             {item.quetionTitle}
                           </Text>
                           <View className="hot-footer-text">
-                            <Text>{ Math.floor(Math.random()) + '回答 · ' + Math.floor(Math.random()) + '关注'}</Text>
+                            <Text>{ Math.floor(Math.random()*1000) + '回答 · ' + Math.floor(Math.random()*1000) + '关注'}</Text>
                           </View>
                         </View>
                       </View>
