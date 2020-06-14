@@ -8,7 +8,8 @@ export default class Usercenter extends Component {
   constructor() {
     super(...arguments);
     this.state = {
-        userInfo: userList[Math.floor(Math.random() * userList.length)],
+        userId : 4,
+        userInfo: userList[4],
         userAskedQuestion: [],
         questionLst:questionLst,
         openQuestion: false,
@@ -16,18 +17,7 @@ export default class Usercenter extends Component {
     }
   }
 
-   // 获得推荐列表API
-   getUserAskedQuestionList = () => {
-    // console.log(this.state.userAskedQuestion);
-    // console.log(questionLst);
-    // console.log(Array.from(this.state.userAskedQuestion, 
-    //   idx => this.state.questionLst[idx]));
-    
-    this.setState({
-      userAskedQuestion: Array.from(this.state.userAskedQuestion, 
-        idx => this.state.questionLst[idx])
-    });
-  };
+
 
   handleClickQuestion (value) {
     this.setState({
@@ -39,17 +29,20 @@ export default class Usercenter extends Component {
       openVote: value
     })
   }
+  selectQuestions(userId) {
+    var lst = questionLst.filter(item => 
+      parseInt(item.asked_User_id) == userId);
+    return lst;
+  }
 
   componentWillMount () { }
 
   componentDidMount () {
     this.setState({
-      userAskedQuestion: Array.from(this.state.userInfo.askekQuestionID),
       detailedInfo:this.state.userInfo.detailedInfo,
       userName: this.state.userInfo.userName
     });
-    // console.log(this.state.userAskedQuestion);
-
+    this.selectQuestions(this.state.userId);
    }
 
   componentWillUnmount () { }
@@ -64,13 +57,13 @@ export default class Usercenter extends Component {
 
     
   render () {
-    this.getUserAskedQuestionList();
     const {
       userInfo,
       userAskedQuestion,
       userName,
       detailedInfo,
     } = this.state;
+    console.log(userAskedQuestion);
     return (
       <View className='userCenter'>
         <View className="info-component">
@@ -102,9 +95,12 @@ export default class Usercenter extends Component {
           <AtList hasBorder={false}>
           {/* {test.length > 0 && ( */}
           {userAskedQuestion.map((item) => {
+              console.log(item);
+              console.log(item.quetionTitle);
+              console.log(item.Questions_id);
               return (
                 <AtListItem
-                    title={item}
+                    title={item.quetionTitle}
                     arrow='right'
                     thumb='https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png'
                 />);

@@ -9,8 +9,8 @@ export default class Polldetail extends Component {
     super(...arguments);
     this.state = {
       questionId: 3,
-      questionTitle: "研究生毕业，应该读博士吗",
-      detailedInfo: "马上12月研究生毕业，现在面临12月份毕业工作和申请明年21年的博士。本人对于科研并没有很高的热情，但是因为博士可以带来更高的起点和更好的职业道路，再加上因为疫情影响，现在找工作也比较困难，所以申请博士的念头冒了出来。可是心啊刚到博士四五年之后才能毕业，所以还是很纠结",
+      questionTitle: "",
+      detailedInfo: "",
       options: [["应该", 3], ["不应该", 6], ["不知道", 1]],
       totalVotes: 10,
       questionStatus: 1,
@@ -20,39 +20,40 @@ export default class Polldetail extends Component {
       askedUserId: 6,
       answered: false,
       selected: -1,
-      ownComment: "",
+      ownComment: ""
     }
   }
+
   chooseVote = e => {
-    this.setState((state, props) => {
+    let that = this;
+    that.setState((state, props) => {
       let n = [...state.options]
       n[parseInt(e.currentTarget.id)][1] += 1
-
-      return { comment: n, answered: true, selected: parseInt(e.currentTarget.id) };
+      return { 
+              totalVotes:this.state.totalVotes+1,
+              comment: n, 
+              answered: true, 
+              selected: parseInt(e.currentTarget.id)};
     });
   }
+
   submitOwnComment = e => {
     // console.log("submit " + this.state.ownComment)
   }
   updateOwnComment = e => {
     // console.log(e)
   }
-  componentWillMount(options = this.$router.params) {
-    console.log(options.question_id);
-    this.setState({
-      questionId:options.question_id
-    });
-    console.log("already set state");
-    console.log(this.state.questionId);
-
+  componentWillMount() {
     // TODO: actual set the state
   }
 
-  componentDidMount() {
-    console.log("actaully set?");
-
+  componentDidMount(options = this.$router.params) {
+    var qId = options.question_id;
+    var qInfo = questionLst[qId];
     this.setState({
-      questionTitle: questionLst[this.state.questionId].questionTitle 
+      questionId:qId,
+      questionTitle: qInfo.quetionTitle,
+      detailedInfo : qInfo.detailedInfo,
     })
    }
 
@@ -67,6 +68,12 @@ export default class Polldetail extends Component {
   }
 
   render() {
+    console.log("render called");
+    const {
+      questionId,
+      questionTitle,
+      detailedInfo
+    } = this.state;
 
     return (
       <View className='container'>
@@ -78,7 +85,10 @@ export default class Polldetail extends Component {
               <View className="option-li" id={index} onClick={this.chooseVote.bind(this)}>
                 <View className="image-box"></View>
                 <View className="option-content-wrapper">
-                  <View className={"percentage-bar " + (this.state.answered ? 'show' : 'hide') + (this.state.selected == parseInt(index) ? ' selected' : ' unselected')} style={{ width: item[1] / this.state.totalVotes * 100 + "%" }}></View>
+                  <View className={"percentage-bar " + (this.state.answered ? 'show' : 'hide') 
+                  + (this.state.selected == parseInt(index) ? ' selected' : ' unselected')} 
+                  style={{ width: item[1] / this.state.totalVotes * 100 + "%" }}>
+                  </View>
                   <View className="desc">
                     <View className="option-text">{item[0]}</View>
                     <View className={"option-vote " + (this.state.answered ? 'show' : 'hide')}>{item[1]} votes</View>
