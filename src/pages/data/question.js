@@ -149,7 +149,7 @@ var userList =[
             "userId": "1",
             "userName": "Ricky",
             "askekQuestionID": "[1]",
-            "Voted Question id_result": "[1:1]",
+            "votedQuestionIDresult": "[1:1]",
             "Interest id": "[2]",
             "detailedInfo": "哥大研一学生",
             "Volt_val": "不知道。。。。",
@@ -160,7 +160,7 @@ var userList =[
             "userId": "2",
             "userName": "Oliver",
             "askekQuestionID": "[2,5,10]",
-            "Voted Question id_result": "[2:1,5:2,10:-1]",
+            "votedQuestionIDresult": "[2:1,5:2,10:-1]",
             "Interest id": "[1,2]",
             "detailedInfo": "NYU交换生"
         },
@@ -168,7 +168,7 @@ var userList =[
             "userId": "3",
             "userName": "Max",
             "askekQuestionID": "[2,3,10]",
-            "Voted Question id_result": "[2:2,3:2,10:2]",
+            "votedQuestionIDresult": "[6,8,10]",
             "Interest id": "[1,2,7]",
             "detailedInfo": "社会主义接班人",
             "ask_num": "3"
@@ -177,7 +177,7 @@ var userList =[
             "userId": "4",
             "userName": "wendyTesta",
             "askekQuestionID": "[6,7,11]",
-            "Voted Question id_result": "[6:1,7:1,11:2]",
+            "votedQuestionIDresult": "[4,10,8]",
             "Interest id": "[4,7]",
             "detailedInfo": "金融民工",
             "ask_num": "3"
@@ -186,7 +186,7 @@ var userList =[
             "userId": "5",
             "userName": "jennyjj",
             "askekQuestionID": "[5,8]",
-            "Voted Question id_result": "[5:2,8:1]",
+            "votedQuestionIDresult": "[5,8]",
             "Interest id": "[1,2,4]",
             "detailedInfo": "海贼王的男人",
             "ask_num": "2"
@@ -195,7 +195,7 @@ var userList =[
             "userId": "6",
             "userName": "ppchaos",
             "askekQuestionID": "[4]",
-            "Voted Question id_result": "[4:1]",
+            "votedQuestionIDresult": "[4:1]",
             "Interest id": "[1,2]",
             "detailedInfo": "脚踏实地的理想主义者",
             "ask_num": "1"
@@ -204,7 +204,7 @@ var userList =[
             "userId": "7",
             "userName": "elsago",
             "askekQuestionID": "[9]",
-            "Voted Question id_result": "[9:2]",
+            "votedQuestionIDresult": "[9:2]",
             "Interest id": "[2]",
             "detailedInfo": "别低头 王冠会掉",
             "ask_num": "1"
@@ -213,371 +213,371 @@ var userList =[
             "userId": "8",
             "userName": "mask",
             "askekQuestionID": "[9]",
-            "Voted Question id_result": "[9:1]",
+            "votedQuestionIDresult": "[9:1]",
             "detailedInfo": "勤奋"
         },
         {
             "userId": "9",
             "userName": "spceee",
             "askekQuestionID": "[1,2]",
-            "Voted Question id_result": "[1:1,2:2]",
+            "votedQuestionIDresult": "[1:1,2:2]",
             "detailedInfo": "实践出真知"
         },
         {
             "userId": "10",
             "userName": "jackhi",
             "askekQuestionID": "[2,9]",
-            "Voted Question id_result": "[2:1,9:1]",
+            "votedQuestionIDresult": "[2:1,9:1]",
             "detailedInfo": "YOLO"
         },
         {
             "userId": "11",
             "userName": "echo",
             "askekQuestionID": "[3,6]",
-            "Voted Question id_result": "[3:1,6:2]",
+            "votedQuestionIDresult": "[3:1,6:2]",
             "detailedInfo": "努力"
         },
         {
             "userId": "12",
             "userName": "coluni",
             "askekQuestionID": "[9]",
-            "Voted Question id_result": "[9:2]",
+            "votedQuestionIDresult": "[9:2]",
             "detailedInfo": "有梦想谁都了不起"
         },
         {
             "userId": "13",
             "userName": "jackma",
             "askekQuestionID": "[1,3, 5, 9, 10]",
-            "Voted Question id_result": "[1:2,3:2, 5:2, 9:2, 10:2]",
+            "votedQuestionIDresult": "[1:2,3:2, 5:2, 9:2, 10:2]",
             "detailedInfo": "一只搬砖狗"
         },
         {
             "userId": "14",
             "userName": "appleee",
             "askekQuestionID": "[6]",
-            "Voted Question id_result": "[6:1]",
+            "votedQuestionIDresult": "[6:1]",
             "detailedInfo": "虚实之间 孰对孰错"
         },
         {
             "userId": "15",
             "userName": "jenana",
             "askekQuestionID": "[3]",
-            "Voted Question id_result": "[3:2]",
+            "votedQuestionIDresult": "[3:2]",
             "detailedInfo": "奥利给"
         },
         {
             "userId": "16",
             "userName": "levisww",
             "askekQuestionID": "[2,8]",
-            "Voted Question id_result": "[2:1,8:1]",
+            "votedQuestionIDresult": "[2:1,8:1]",
             "detailedInfo": "走起"
         },
         {
             "userId": "17",
             "userName": "willswu",
             "askekQuestionID": "[6,7,10]",
-            "Voted Question id_result": "[6:1,7:1,10:2]",
+            "votedQuestionIDresult": "[6:1,7:1,10:2]",
             "detailedInfo": "就是干"
         },
         {
             "userId": "18",
             "userName": "Yeha",
             "askekQuestionID": "[1,3,10]",
-            "Voted Question id_result": "[1:2,3:1,10:1]",
+            "votedQuestionIDresult": "[1:2,3:1,10:1]",
             "detailedInfo": "No pain, no gain"
         },
         {
             "userId": "19",
             "userName": "bul",
             "askekQuestionID": "[2,4,10]",
-            "Voted Question id_result": "[2:2,4:1,10:2]",
+            "votedQuestionIDresult": "[2:2,4:1,10:2]",
             "detailedInfo": "超越"
         },
         {
             "userId": "20",
             "userName": "mia",
             "askekQuestionID": "[2,4, 9, 10]",
-            "Voted Question id_result": "[2:1,4:1, 9:2, 10:2]",
+            "votedQuestionIDresult": "[2:1,4:1, 9:2, 10:2]",
             "detailedInfo": "计算机博士，旅居美国"
         },
         {
             "userId": "21",
             "userName": "Coco",
             "askekQuestionID": "[2,8]",
-            "Voted Question id_result": "[2:2,8:1]",
+            "votedQuestionIDresult": "[2:2,8:1]",
             "detailedInfo": "PE/VC圈资深人士"
         },
         {
             "userId": "22",
             "userName": "Yiesha",
             "askekQuestionID": "[1,2,3]",
-            "Voted Question id_result": "[1:1,2:2,3:1]",
+            "votedQuestionIDresult": "[1:1,2:2,3:1]",
             "detailedInfo": "10年HR经验"
         },
         {
             "userId": "23",
             "userName": "BrandyP",
             "askekQuestionID": "[2,5,11]",
-            "Voted Question id_result": "[2:1,5:2,11:2]",
+            "votedQuestionIDresult": "[2:1,5:2,11:2]",
             "detailedInfo": "一名水手"
         },
         {
             "userId": "24",
             "userName": "MonkeyL",
             "askekQuestionID": "[1,2,9,10,11]",
-            "Voted Question id_result": "[1:1,2:1,9:2,10:1,11:1]",
+            "votedQuestionIDresult": "[1:1,2:1,9:2,10:1,11:1]",
             "detailedInfo": "餐饮界老手"
         },
         {
             "userId": "25",
             "userName": "Solo",
             "askekQuestionID": "[4]",
-            "Voted Question id_result": "[4:1]",
+            "votedQuestionIDresult": "[4:1]",
             "detailedInfo": "哈佛大学大一新生"
         },
         {
             "userId": "26",
             "userName": "OnePiece",
             "askekQuestionID": "[1,2,3,4,5,6,8,10,11]",
-            "Voted Question id_result": "[1:2,2:2,3:1,4:2,5:1,6:1,8:1,10:2,11:2]",
+            "votedQuestionIDresult": "[1:2,2:2,3:1,4:2,5:1,6:1,8:1,10:2,11:2]",
             "detailedInfo": "吃播博主"
         },
         {
             "userId": "27",
             "userName": "Bryan",
             "askekQuestionID": "[2,3,7]",
-            "Voted Question id_result": "[2:1,3:1,7:2]",
+            "votedQuestionIDresult": "[2:1,3:1,7:2]",
             "detailedInfo": "前国家击剑队成员"
         },
         {
             "userId": "28",
             "userName": "nayer",
             "askekQuestionID": "[1,2,3,6]",
-            "Voted Question id_result": "[1:1,2:2,3:1,6:2]",
+            "votedQuestionIDresult": "[1:1,2:2,3:1,6:2]",
             "detailedInfo": "基金经理"
         },
         {
             "userId": "29",
             "userName": "lol",
             "askekQuestionID": "[1,5,9]",
-            "Voted Question id_result": "[1:2,5:2,9:2]",
+            "votedQuestionIDresult": "[1:2,5:2,9:2]",
             "detailedInfo": "券商研究所化工首席"
         },
         {
             "userId": "30",
             "userName": "Comeone",
             "askekQuestionID": "[8]",
-            "Voted Question id_result": "[8:1]",
+            "votedQuestionIDresult": "[8:1]",
             "detailedInfo": "常春藤本科在读"
         },
         {
             "userId": "31",
             "userName": "rainbow",
             "askekQuestionID": "[4,6,8]",
-            "Voted Question id_result": "[4:1,6:1,8:1]",
+            "votedQuestionIDresult": "[4:1,6:1,8:1]",
             "detailedInfo": "体操运动员"
         },
         {
             "userId": "32",
             "userName": "blast",
             "askekQuestionID": "[2,7,9]",
-            "Voted Question id_result": "[2:1,7:1,9:2]",
+            "votedQuestionIDresult": "[2:1,7:1,9:2]",
             "detailedInfo": "加拿大美妆博主"
         },
         {
             "userId": "33",
             "userName": "wtefow",
             "askekQuestionID": "[3,8]",
-            "Voted Question id_result": "[3:2,8:2]",
+            "votedQuestionIDresult": "[3:2,8:2]",
             "detailedInfo": "留学申请资深顾问"
         },
         {
             "userId": "34",
             "userName": "KDBK",
             "askekQuestionID": "[4,7,8]",
-            "Voted Question id_result": "[4:1,7:1,8:2]",
+            "votedQuestionIDresult": "[4:1,7:1,8:2]",
             "detailedInfo": "炉石传说美服Top3"
         },
         {
             "userId": "35",
             "userName": "wrfoj ",
             "askekQuestionID": "[2,3,4,6,11]",
-            "Voted Question id_result": "[2:1,3:2,4:2,6:1,11:1]",
+            "votedQuestionIDresult": "[2:1,3:2,4:2,6:1,11:1]",
             "detailedInfo": "体校大三在读"
         },
         {
             "userId": "36",
             "userName": "Lufei",
             "askekQuestionID": "[2,4,9,11]",
-            "Voted Question id_result": "[2:1,4:1,9:2,11:1]",
+            "votedQuestionIDresult": "[2:1,4:1,9:2,11:1]",
             "detailedInfo": "一枚吃货"
         },
         {
             "userId": "37",
             "userName": "zuolo",
             "askekQuestionID": "[3,7]",
-            "Voted Question id_result": "[3:2,7:1]",
+            "votedQuestionIDresult": "[3:2,7:1]",
             "detailedInfo": "NCAA联盟队员"
         },
         {
             "userId": "38",
             "userName": "backdown",
             "askekQuestionID": "[5,10]",
-            "Voted Question id_result": "[5:1,10:2]",
+            "votedQuestionIDresult": "[5:1,10:2]",
             "detailedInfo": "一名技术宅"
         },
         {
             "userId": "39",
             "userName": "tql",
             "askekQuestionID": "[2,3,4,5,6,8,9,10,11]",
-            "Voted Question id_result": "[2:1,3:2,4:2,5:1,6:1,8:2,9:1,10:1,11:2]",
+            "votedQuestionIDresult": "[2:1,3:2,4:2,5:1,6:1,8:2,9:1,10:1,11:2]",
             "detailedInfo": "爱犬人士"
         },
         {
             "userId": "40",
             "userName": "Dejavu",
             "askekQuestionID": "[4,7,9]",
-            "Voted Question id_result": "[4:1,7:1,9:2]",
+            "votedQuestionIDresult": "[4:1,7:1,9:2]",
             "detailedInfo": "北美乐评人"
         },
         {
             "userId": "41",
             "userName": "Kit",
             "askekQuestionID": "[5,7]",
-            "Voted Question id_result": "[5:2,7:1]",
+            "votedQuestionIDresult": "[5:2,7:1]",
             "detailedInfo": "最酷的00后rapper"
         },
         {
             "userId": "42",
             "userName": "bruce",
             "askekQuestionID": "[6,7,9]",
-            "Voted Question id_result": "[6:1,7:1,9:2]",
+            "votedQuestionIDresult": "[6:1,7:1,9:2]",
             "detailedInfo": "连续创业者"
         },
         {
             "userId": "43",
             "userName": "Pepper",
             "askekQuestionID": "[5,6,8]",
-            "Voted Question id_result": "[5:1,6:2,8:1]",
+            "votedQuestionIDresult": "[5:1,6:2,8:1]",
             "detailedInfo": "美国好声音编导"
         },
         {
             "userId": "44",
             "userName": "westpoint",
             "askekQuestionID": "[4,5,6,8]",
-            "Voted Question id_result": "[4:1,5:1,6:2,8:2]",
+            "votedQuestionIDresult": "[4:1,5:1,6:2,8:2]",
             "detailedInfo": "西点军校在读"
         },
         {
             "userId": "45",
             "userName": "Oriental",
             "askekQuestionID": "[11]",
-            "Voted Question id_result": "[11:1]",
+            "votedQuestionIDresult": "[11:1]",
             "detailedInfo": "新东方北美名师"
         },
         {
             "userId": "46",
             "userName": "Sheepy",
             "askekQuestionID": "[6,7,9,10,11]",
-            "Voted Question id_result": "[6:1,7:1,9:1,10:1,11:2]",
+            "votedQuestionIDresult": "[6:1,7:1,9:1,10:1,11:2]",
             "detailedInfo": "催眠大师"
         },
         {
             "userId": "47",
             "userName": "worldorm",
             "askekQuestionID": "[1,2,3,6]",
-            "Voted Question id_result": "[1:1,2:2,3:1,6:1]",
+            "votedQuestionIDresult": "[1:1,2:2,3:1,6:1]",
             "detailedInfo": "永远的职业是学生"
         },
         {
             "userId": "48",
             "userName": "Guannn",
             "askekQuestionID": "[1,3,6]",
-            "Voted Question id_result": "[1:2,3:1,6:2]",
+            "votedQuestionIDresult": "[1:2,3:1,6:2]",
             "detailedInfo": "模型拼装专家"
         },
         {
             "userId": "49",
             "userName": "Fy",
             "askekQuestionID": "[5,6,8,11]",
-            "Voted Question id_result": "[5:1,6:2,8:2,11:2]",
+            "votedQuestionIDresult": "[5:1,6:2,8:2,11:2]",
             "detailedInfo": "无产阶级斗士"
         },
         {
             "userId": "50",
             "userName": "TNT",
             "askekQuestionID": "[6,7,9]",
-            "Voted Question id_result": "[6:1,7:2,9:2]",
+            "votedQuestionIDresult": "[6:1,7:2,9:2]",
             "detailedInfo": "莱斯大学 化学专业大二在读"
         },
         {
             "userId": "51",
             "userName": "alright",
             "askekQuestionID": "[2,5,9,11]",
-            "Voted Question id_result": "[2:1,5:1,9:2,11:2]",
+            "votedQuestionIDresult": "[2:1,5:1,9:2,11:2]",
             "detailedInfo": "罗切斯特大学 经济专业大四"
         },
         {
             "userId": "52",
             "userName": "Tommy",
             "askekQuestionID": "[10]",
-            "Voted Question id_result": "[10:2]",
+            "votedQuestionIDresult": "[10:2]",
             "detailedInfo": "MIT MFin 在读"
         },
         {
             "userId": "53",
             "userName": "Ogi",
             "askekQuestionID": "[7,8]",
-            "Voted Question id_result": "[7:1,8:2]",
+            "votedQuestionIDresult": "[7:1,8:2]",
             "detailedInfo": "联合国常任理事委员"
         },
         {
             "userId": "54",
             "userName": "QWER",
             "askekQuestionID": "[2,4,9,10, 11]",
-            "Voted Question id_result": "[2:1,4:1,9:2,10:2,11:1]",
+            "votedQuestionIDresult": "[2:1,4:1,9:2,10:2,11:1]",
             "detailedInfo": "LA鞋铺创始人"
         },
         {
             "userId": "55",
             "userName": "Smoother",
             "askekQuestionID": "[4,6,8]",
-            "Voted Question id_result": "[4:2,6:2,8:1]",
+            "votedQuestionIDresult": "[4:2,6:2,8:1]",
             "detailedInfo": "韩圈10年粉"
         },
         {
             "userId": "56",
             "userName": "hamp",
             "askekQuestionID": "[3,5,8,11]",
-            "Voted Question id_result": "[3:1,5:1,8:2,11:2]",
+            "votedQuestionIDresult": "[3:1,5:1,8:2,11:2]",
             "detailedInfo": "前CUBA运动员"
         },
         {
             "userId": "57",
             "userName": "Tedddy",
             "askekQuestionID": "[4,5,6,8]",
-            "Voted Question id_result": "[4:1,5:2,6:2,8:2]",
+            "votedQuestionIDresult": "[4:1,5:2,6:2,8:2]",
             "detailedInfo": "洛杉矶湖人10年球迷"
         },
         {
             "userId": "58",
             "userName": "awsl",
             "askekQuestionID": "[5,9,10]",
-            "Voted Question id_result": "[5:1,9:1,10:2]",
+            "votedQuestionIDresult": "[5:1,9:1,10:2]",
             "detailedInfo": "集邮爱好者"
         },
         {
             "userId": "59",
             "userName": "happy",
             "askekQuestionID": "[5,10]",
-            "Voted Question id_result": "[5:1,10:2]",
+            "votedQuestionIDresult": "[5:1,10:2]",
             "detailedInfo": "电音小王子"
         },
         {
             "userId": "60",
             "userName": "Dearest",
             "askekQuestionID": "[2,6,9]",
-            "Voted Question id_result": "[2:1,6:2,9:1]",
+            "votedQuestionIDresult": "[2:1,6:2,9:1]",
             "detailedInfo": "纽约米其林大厨"
         }];
 
