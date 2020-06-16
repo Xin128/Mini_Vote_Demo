@@ -1,0 +1,90 @@
+<block wx:if="{{$taroCompReady}}">
+    <view class="container">
+        <view class="search-wrap">
+            <view class="search-button">
+                <image class="search-button-icon" src="{{anonymousState__temp}}"></image><text class="search-button-text" bindtap="showQuesMask">提问</text>
+            </view>
+        </view>
+        <view class="{{'question-mask ' + (isShowQues ? 'show' : 'hide')}}">
+            <view class="question-input-wrap">
+                <view class="question-title-wrap">
+                    <view class="question-mask-cancel" bindtap="hideQuesMask">取消</view><text class="mask-title">提问</text>
+                    <view class="question-mask-next">下一步</view>
+                </view>
+                <input class="question-mask-input" placeholder-style="color: #cdcdcd" placeholder="输入问题并以问号结尾" type="text" />
+                <textarea class="quesion-mask-text" placeholder-style="color: #cdcdcd" placeholder="问题描述(选填)" auto-focus="true"></textarea>
+            </view>
+        </view>
+        <at-tabs compid="{{$compid__32}}">
+            <at-tabs-pane compid="{{$compid__33}}">
+                <view class="{{'tab-content ' + (isActive == 0 ? 'show' : 'hide')}}">
+                    <block wx:if="{{focusList.length > 0}}">
+                        <block>
+                            <view class="tab-content-focus" wx:key="index" wx:for="{{focusList}}" wx:for-item="item" wx:for-index="index">
+                                <view class="content-category">
+                                    <image class="category-avatar" src="{{item.avatar}}"></image><text class="category-title">{{item.category}}</text>
+                                </view>
+                            </view>
+                        </block>
+                    </block>
+                    <block wx:if="{{focusList.length == 0}}">
+                        <view>
+                            <image class="to-recommend-img" src="{{anonymousState__temp2}}"></image>
+                            <view class="to-recommend-title">还没关注的人</view>
+                            <view class="to-recommend-tip">去【推荐】看看吧</view>
+                        </view>
+                    </block>
+                </view>
+            </at-tabs-pane>
+            <at-tabs-pane compid="{{$compid__34}}">
+                <view class="dragUpdatePage">
+                    <view class="downDragBox" style="{{anonymousState__temp3}}">
+                        <at-activity-indicator compid="{{$compid__35}}"></at-activity-indicator>
+                    </view>
+                    <scroll-view style="{{anonymousState__temp4}}" scroll-y="{{scrollY}}" class="{{'tab-container ' + (isActive == 1 ? 'show' : 'hide')}}" upper-threshold="{{Threshold}}" lower-threshold="{{Threshold}}" bindtouchstart="touchStart" catchtouchmove="touchRecMove" bindtouchend="touchEnd" bindscrolltoupper="getRecommendList" bindscrolltolower="onReachBottom" scroll-with-animation="{{scrollAnimation}}">
+                        <view class="tab-content">
+                            <view class="tab-content-recommend" wx:key="index" wx:for="{{recList}}" wx:for-item="item" wx:for-index="index">
+                                <view class="content-category">
+                                    <image class="category-avatar" src="{{item.avatar}}"></image><text class="category-title">{{item.author}}</text>
+                                </view>
+                                <view class="recommend-title" data-id="{{item.id}}" data-title="{{item.title}}" bindtap="goTitleDetail">{{item.title}}</view>
+                                <view class="recommend-content" data-id="{{item.id}}" data-title="{{item.title}}" data-avatar="{{item.avatar}}" data-content="{{item.fineAnswer.content}}" data-like="{{item.fineAnswer.like}}" data-time="{{item.fineAnswer.time}}" data-comment="{{item.fineAnswer.comment}}" bindtap="goContentDetail">{{item.fineAnswer.content}}</view>
+                                <view class="recommend-footer">
+                                    <view class="recommend-footer-text"><text>{{item.fineAnswer.like + (item.from == 'live' ? '感兴趣' : '赞同') + ' · ' + item.fineAnswer.comment + (item.from == 'live' ? '人参与' : '评论')}}</text>
+                                        <block wx:if="{{item.from}}"><text>{{'· ' + footerTip[item.from]}}</text>
+                                        </block>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="upDragBox">
+                            <at-load-more compid="{{$compid__36}}"></at-load-more>
+                        </view>
+                    </scroll-view>
+                </view>
+            </at-tabs-pane>
+            <at-tabs-pane compid="{{$compid__37}}">
+                <view class="dragUpdatePage">
+                    <view class="downDragBox" style="{{anonymousState__temp7}}">
+                        <at-activity-indicator compid="{{$compid__38}}"></at-activity-indicator>
+                    </view>
+                    <scroll-view style="{{anonymousState__temp8}}" scroll-y="{{scrollY}}" class="{{'tab-container ' + (isActive == 2 ? 'show' : 'hide')}}" bindtouchstart="touchStart" catchtouchmove="touchHotMove" bindtouchend="touchEnd" upper-threshold="{{Threshold}}" lower-threshold="{{Threshold}}" bindscrolltoupper="getHotList" bindscrolltolower="onReachBottom" scroll-with-animation="{{scrollAnimation}}">
+                        <view class="tab-content">
+                            <view class="at-row tab-content-hot" wx:key="index" wx:for="{{hotList}}" wx:for-item="item" wx:for-index="index">
+                                <view class="at-col at-col-1"><text class="{{'hot-index ' + (index < 3 ? 'hot-index-hot' : '')}}">{{index + 1}}</text>
+                                </view>
+                                <view class="at-col at-col-12 at-col--wrap"><text class="hot-title">{{item.title}}</text>
+                                    <view class="hot-footer-text"><text>{{item.comment + '回答 · ' + item.focus + '关注'}}</text>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="upDragBox">
+                            <at-load-more compid="{{$compid__39}}"></at-load-more>
+                        </view>
+                    </scroll-view>
+                </view>
+            </at-tabs-pane>
+        </at-tabs>
+    </view>
+</block>
