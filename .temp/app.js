@@ -1,4 +1,5 @@
 import Taro, { Component } from "@tarojs/taro-h5";
+import 'taro-ui/dist/style/index.scss';
 
 
 import './app.scss';

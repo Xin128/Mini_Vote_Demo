@@ -1,0 +1,11 @@
+<block wx:if="{{$taroCompReady}}">
+    <at-form compid="{{$compid__30}}">
+        <at-input compid="{{$compid__31}}"></at-input>
+        <at-input compid="{{$compid__32}}"></at-input>
+        <at-switch compid="{{$compid__33}}"></at-switch>
+        <at-input wx:for="{{loopArray7}}" wx:for-item="value" wx:for-index="index" compid="{{value.$compid__29}}"></at-input>
+        <at-button compid="{{$compid__34}}">增加选项</at-button>
+        <at-button compid="{{$compid__35}}">提交</at-button>
+        <at-button compid="{{$compid__36}}">重置</at-button>
+    </at-form>
+</block>

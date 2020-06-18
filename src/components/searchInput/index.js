@@ -32,7 +32,7 @@ class SearchInput extends Taro.Component {
   searchTopic = event => {
     event.preventDefault();
     let that = this;
-    console.log(`同步:`, that.state.historyList);
+    // console.log(`同步:`, that.state.historyList);
     event.detail.value &&
       that.state.historyList.indexOf(event.detail.value) === -1 &&
       that.setState(

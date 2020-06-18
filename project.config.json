@@ -1,8 +1,9 @@
 {
 	"miniprogramRoot": "dist/",
+	"cloudfunctionRoot": "cloud/functions/",
 	"projectname": "MiniVote",
 	"description": "MiniVote from scratch",
-	"appid": "touristappid",
+	"appid": "wxc70491404c95cfb5",
 	"setting": {
 		"urlCheck": true,
 		"es6": false,

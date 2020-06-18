@@ -12,7 +12,14 @@ import './app.scss'
 
 class App extends Component {
 
-  componentDidMount () {}
+  componentDidMount () {
+    if (process.env.TARO_ENV === 'weapp') {
+      Taro.cloud.init({
+          env: "minivote",
+          traceUser: true
+      })
+      }
+  }
 
   componentDidShow () {}
 
@@ -24,9 +31,9 @@ class App extends Component {
     pages: [
       'pages/index/index',
       'pages/vote/vote',
-      'pages/userCenter/userCenter'
+      'pages/userCenter/userCenter',
+      'pages/vote/pollDetail'
 
-   
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -58,8 +65,6 @@ class App extends Component {
           iconPath: 'assets/images/me.png',
           selectedIconPath: 'assets/images/me-light.png'
         }
-        
-        
       ]
     }
   }
@@ -72,5 +77,6 @@ class App extends Component {
     )
   }
 }
+
 
 Taro.render(<App />, document.getElementById('app'))

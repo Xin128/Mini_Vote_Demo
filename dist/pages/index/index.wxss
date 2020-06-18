@@ -1,0 +1,282 @@
+@charset "UTF-8";
+/**index.wxss**/
+page {
+  background: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+}
+/* 搜索 */
+.search-wrap {
+  width: 750rpx;
+  height: 100rpx;
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.search-button {
+  width: 100rpx;
+  height: 80rpx;
+  font-size: 28rpx;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 80rpx;
+  margin-left: 20rpx;
+}
+.search-button-icon {
+  width: 40rpx;
+  height: 40rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+.search-button-text {
+  color: #1e8ae8;
+  display: inline-block;
+  vertical-align: middle;
+}
+.question-mask {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background: #fff;
+}
+/* 暂时提问style  */
+.question-input-wrap {
+  margin: 10rpx auto;
+  position: relative;
+}
+.question-title-wrap {
+  width: 700rpx;
+  height: 60rpx;
+  margin: 0 auto;
+  padding: 10rpx 25rpx;
+  border-bottom: 1rpx solid #f6f6f6;
+  top: 0;
+  left: 0;
+}
+.question-mask-next,
+.question-mask-cancel {
+  font-size: 28rpx;
+  color: #1e8ae8;
+}
+.question-mask-cancel {
+  width: 100rpx;
+  height: 100%;
+  float: left;
+}
+.mask-title {
+  width: 60rpx;
+  font-size: 28rpx;
+  font-weight: 600rpx;
+  display: block;
+  position: absolute;
+  top: 10rpx;
+  left: 345rpx;
+  z-index: 0;
+}
+.question-mask-next {
+  width: 100rpx;
+  height: 100%;
+  float: right;
+}
+.question-mask-input,
+.quesion-mask-text {
+  max-width: 700rpx;
+  padding: 10rpx 25rpx;
+  font-size: 28rpx;
+  border-bottom: 1rpx solid #f6f6f6;
+  caret-color: #1e8ae8;
+}
+.question-mask-input {
+  width: 100%;
+  height: 50rpx;
+  left: 0;
+}
+.quesion-mask-text {
+  width: 100%;
+  min-width: 600rpx;
+  left: 0;
+}
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+/* tab标题*/
+.tab-wrap {
+  max-width: 750rpx;
+  background: #f6f6f6;
+  border-top: 1rpx solid #f6f6f6;
+  border-bottom: 1rpx solid #f6f6f6;
+  position: fixed;
+  top: 100rpx;
+  left: 0;
+  z-index: -1;
+}
+.tab-item {
+  display: inline-block;
+  width: 250rpx;
+  font-size: 28rpx;
+  text-align: center;
+  background-color: #fff;
+  color: #999;
+  padding: 12rpx 0;
+}
+.tab-item-active {
+  color: #323233;
+}
+.tab-item-line {
+  width: 250rpx;
+  position: absolute;
+  left: 250rpx;
+  bottom: 1rpx;
+  border-bottom: 4rpx solid #323233;
+}
+/* tabs标签页内容  */
+.dragUpdatePage {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+.downDragBox {
+  width: 100%;
+  top: 0;
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+  position: absolute;
+}
+.upDragBox {
+  height: 30vh;
+}
+.tab-container {
+  height: 100vh;
+  position: absolute;
+}
+.tab-content {
+  max-width: 750rpx;
+  background: #f6f6f6;
+  font-size: 28rpx;
+  margin-top: 15rpx;
+}
+.tab-content-focus,
+.tab-content-recommend,
+.tab-content-hot {
+  max-width: 750rpx;
+  height: 250rpx;
+  padding: 20rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+.to-recommend-img {
+  width: 200rpx;
+  height: 200rpx;
+  display: block;
+  margin: 50rpx auto;
+}
+.to-recommend-title {
+  font-size: 44rpx;
+  color: #cdcdcd;
+  font-weight: 500;
+  text-align: center;
+}
+.to-recommend-tip {
+  color: #1e8ae8;
+  font-size: 32rpx;
+  text-align: center;
+  margin: 20rpx;
+}
+.load-more {
+  color: #cdcdcd;
+  text-align: center;
+  margin-right: 15rpx 0;
+}
+.is-loading {
+  width: 25rpx;
+  height: 25rpx;
+  margin-right: 10rpx;
+}
+.category-avatar {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+}
+.category-title {
+  font-size: 28rpx;
+  color: #999;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 20rpx;
+}
+.recommend-title {
+  font-size: 32rpx;
+  margin: 10rpx 0;
+}
+.recommend-content {
+  max-width: 700rpx;
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  font-size: 28rpx;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  color: #666;
+  line-height: 1.6;
+}
+.recommend-footer,
+.hot-footer-text {
+  margin: 15rpx 0;
+  color: #999;
+  font-size: 26rpx;
+}
+.tab-content-hot {
+  height: 150rpx;
+  margin-bottom: 2rpx;
+}
+.hot-index,
+.hot-title {
+  display: inline-block;
+  vertical-align: top;
+}
+.hot-index,
+.hot-title {
+  font-size: 34rpx;
+}
+.hot-index {
+  width: 50rpx;
+  color: #e6da7a;
+}
+.hot-index-hot {
+  color: orangered;
+}
+.hot-title {
+  max-width: 470rpx;
+  display: -webkit-inline-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  line-height: 1.6;
+  margin-right: 20rpx;
+  margin-left: 10rpx;
+  height: 110rpx;
+}
+.hot-image {
+  width: 150rpx;
+  height: 100rpx;
+  border-radius: 10rpx;
+}
+.hot-footer-text {
+  margin-left: 10rpx;
+}

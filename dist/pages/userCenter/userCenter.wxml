@@ -1,0 +1,38 @@
+<block wx:if="{{$taroCompReady}}">
+    <view class="userCenter">
+        <view class="info-component">
+            <view class="userinfo">
+                <view class="userinfo-avatar">
+                    <at-avatar compid="{{$compid__39}}"></at-avatar>
+                </view>
+                <view>
+                    <view class="userinfo-nickname">{{userName}}</view>
+                    <view class="userinfo-pencil">
+                        <at-icon compid="{{$compid__40}}"></at-icon>
+                    </view>
+                    <view class="userinfo-tip"> <text> {{detailedInfo}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="{{'editField' + openEdit ? 'show' : 'hide'}}">
+            <at-float-layout compid="{{$compid__41}}">
+                <at-textarea compid="{{$compid__42}}"></at-textarea>
+            </at-float-layout>
+        </view>
+        <view class="asked">
+            <at-accordion compid="{{$compid__43}}">
+                <at-list compid="{{$compid__44}}">
+                    <at-list-item wx:for="{{loopArray9}}" wx:for-item="item" wx:for-index="_anonIdx2" compid="{{item.$compid__37}}"></at-list-item>
+                </at-list>
+            </at-accordion>
+            <at-accordion compid="{{$compid__45}}">
+                <at-list compid="{{$compid__46}}">
+                    <block wx:if="{{userVotedQuestion.length > 0}}">
+                        <at-list-item wx:for="{{loopArray10}}" wx:for-item="item" wx:for-index="_anonIdx4" compid="{{item.$compid__38}}"></at-list-item>
+                    </block>
+                </at-list>
+            </at-accordion>
+        </view>
+    </view>
+</block>

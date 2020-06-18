@@ -1,0 +1,17 @@
+<block wx:if="{{$taroCompReady}}">
+    <view class="container"><text> {{questionTitle}} </text><text> {{detailedInfo}} </text>
+        <view class="options-list">
+            <view class="option-li" id="{{index}}" bindtap="chooseVote" wx:for="{{loopArray8}}" wx:for-item="item" wx:for-index="index" data-e-tap-so="this">
+                <view class="image-box"></view>
+                <view class="option-content-wrapper">
+                    <view class="{{item.$loopState__temp2}}" style="{{item.$loopState__temp4}}"></view>
+                    <view class="desc">
+                        <view class="option-text">{{item.$original[0]}}</view>
+                        <view class="{{'option-vote ' + (answered ? 'show' : 'hide')}}">{{item.$original[1]}} votes</view>
+                    </view>
+                    <view class="{{'vote-percentage ' + (answered ? 'show' : 'hide')}}">{{item.$original[1] / totalVotes * 100 + "%"}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</block>
