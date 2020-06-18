@@ -29,14 +29,13 @@ export default class Vote extends Component {
     this.setState({
       value
     })
-  }
+  }å
   handleAddOption(value) {
     this.setState((state, props) => ({
       options: [...state.options, ""]
     }));
   }
   onSubmit (event) {
-    console.log(this.state.value)
   }
   onReset (event) {
     this.setState({

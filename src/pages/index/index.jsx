@@ -3,20 +3,35 @@ import { Block, View, Image, Text, Input, Textarea, ScrollView } from '@tarojs/c
 import { AtTabs, AtTabsPane, AtActivityIndicator, AtLoadMore } from 'taro-ui';
 //import { getFocusData, getRcmdData, getHotData } from '@/api/index';
 //import SearchInput from '@/components/searchInput/index';
-//import { showSuccess } from '@/utils/index';
 import './index.scss';
+import {questionLst, userList} from '../data/question.js';
+
 
 class Index extends Component {
+  
   constructor() {
     super(...arguments);
+    console.log("start to retrieve data from db");
+    const db = Taro.cloud.database()
+    db.collection('Users').
+    add({data:{
+      userId:"83",
+      userName:"testUser just for test"
+    }})
+
     this.state = {
       isShow: false,
       searchVal: '', // 空值，以上搜索输入框状态
       isShowQues: false,
-      isActive: 1 /* tabs标签页 */,
+      isActive: 0 /* tabs标签页 */,
       focusList: [],
       recList: [],
-      hotList: [{id: 5, title:"short title", image:["http://dummyimage.com/300x200/7994f2"],comment:44,focus:390},{id: 5, title:"averylongword averylongword averylongword averylongword", image:["http://dummyimage.com/300x200/7994f2"],comment:44,focus:390},{id: 5, title:"this is not a title this is not a title this is not a title this is not a title", image:[],comment:44,focus:390},{id: 5, title:"this is not a title this is not a title this is not a title this is not a title this is not a title this is not a title this is not a title this is not a title", image:[],comment:44,focus:390}],
+      hotList: questionLst,
+      // hotList: [{id: 5, title:"short title", image:["http://dummyimage.com/300x200/7994f2"],comment:44,focus:390},
+      // {id: 5, title:"averylongword averylongword averylongword averylongword", image:["http://dummyimage.com/300x200/7994f2"],comment:44,focus:390},
+      // {id: 5, title:"this is not a title this is not a title this is not a title this is not a title", image:[],comment:44,focus:390},
+      // {id: 5, title:"this is not a title this is not a title this is not a title this is not a title this is not a title this is not a title this is not a title this is not a title", image:[],comment:44,focus:390}],
+      // 
       footerTip: {
         topic: '去文章列表',
         question: '关注话题',
@@ -35,7 +50,9 @@ class Index extends Component {
       downPullText: '下拉刷新',
       creState: {},
       pullState: 0, //刷新状态 0不做操作 1刷新 -1加载更多
-      status: 'more'
+      status: 'more',
+      userdb: Taro.cloud.database().collection("Users"),
+      questiondb: Taro.cloud.database().collection("Questions")
     };
   }
 
@@ -239,10 +256,10 @@ class Index extends Component {
   onReachBottom = () => {
     if (!this.state.isShow && !this.state.isShowQues) {
       switch (+this.state.isActive) {
-        case 1:
+        case 0:
           this.getMoreRecList();
           break;
-        case 2:
+        case 1:
           this.getMoreHotList();
           break;
         default:
@@ -345,17 +362,13 @@ class Index extends Component {
 
   goTitleDetail = event => {
     Taro.navigateTo({
-      url:
-        '../../pages/titleDetail/titleDetail?id=' +
-        event.target.dataset.id +
-        '&title=' +
-        event.target.dataset.title
+      url:'../../pages/vote/pollDetail?question_id='+event.target.dataset.id
     });
   };
   goContentDetail = event => {
     Taro.navigateTo({
       url:
-        '../../pages/contentDetail/contentDetail?id=' +
+        '/pages/vote/pollDetail?id=' +
         event.target.dataset.id +
         '&title=' +
         event.target.dataset.title +
@@ -396,13 +409,23 @@ class Index extends Component {
       dragStyle,
       downPullStyle,
       downPullText,
-      status
+      status,
+      userdb,
+      questiondb
     } = this.state;
-    const tabList = [{ title: '关注' }, { title: '推荐' }, { title: '热榜' }];
+    const tabList = [{ title: '推荐' }, { title: '热榜' }];
     const Threshold = 50;
     const scrollAnimation = true;
+    userdb.limit(2).get().then(res=>{
+      console.log(res);
+      console.log(res.data);
+      res.data.map(entity=> console.log(entity.userName));    
+      });
     return (
       <View className="container">
+        <View>
+          <Button onclick={this.addData.bind(this)} >测试数据库</Button>
+        </View>
         <View className="search-wrap">
           {/* 搜索栏 */}
           {/* <SearchInput
@@ -447,10 +470,10 @@ class Index extends Component {
         {/*  提问end   */}
         {/*  tabs标签页 begin   */}
         <AtTabs className="tab-wrap" current={isActive} tabList={tabList} onClick={this.setActive}>
-          <AtTabsPane current={isActive} index={0}>
+          {/* <AtTabsPane current={isActive} index={0}> */}
             {/* 关注内容 */}
-            <View className={'tab-content ' + (isActive == 0 ? 'show' : 'hide')}>
-              {focusList.length > 0 && (
+            {/* <View className={'tab-content ' + (isActive == 0 ? 'show' : 'hide')}> */}
+              {/* {focusList.length > 0 && (
                 <Block>
                   {focusList.map((item, index) => {
                     return (
@@ -486,10 +509,10 @@ class Index extends Component {
                   {loadMore}
                 </View>
               )} */}
-            </View>
-          </AtTabsPane>
+            {/* </View> */}
+          {/* </AtTabsPane> */}
           {/* 推荐内容 */}
-          <AtTabsPane current={isActive} index={1}>
+          <AtTabsPane current={isActive} index={0}>
             <View className="dragUpdatePage">
               <View className="downDragBox" style={downPullStyle}>
                 <AtActivityIndicator content={downPullText} />
@@ -497,7 +520,7 @@ class Index extends Component {
               <ScrollView
                 style={dragStyle}
                 scrollY={scrollY}
-                className={'tab-container ' + (isActive == 1 ? 'show' : 'hide')}
+                className={'tab-container ' + (isActive == 0 ? 'show' : 'hide')}
                 upperThreshold={Threshold}
                 lowerThreshold={Threshold}
                 onTouchStart={this.touchStart}
@@ -517,7 +540,6 @@ class Index extends Component {
                         <View
                           className="recommend-title"
                           data-id={item.id}
-                          data-title={item.title}
                           onClick={this.goTitleDetail}>
                           {item.title}
                         </View>
@@ -567,7 +589,7 @@ class Index extends Component {
             </View>
           </AtTabsPane>
           {/* 热榜内容 */}
-          <AtTabsPane current={isActive} index={2}>
+          <AtTabsPane current={isActive} index={1}>
             <View className="dragUpdatePage">
               <View className="downDragBox" style={downPullStyle}>
                 <AtActivityIndicator content={downPullText} />
@@ -575,7 +597,7 @@ class Index extends Component {
               <ScrollView
                 style={dragStyle}
                 scrollY={scrollY}
-                className={'tab-container ' + (isActive == 2 ? 'show' : 'hide')}
+                className={'tab-container ' + (isActive == 1 ? 'show' : 'hide')}
                 onTouchStart={this.touchStart}
                 onTouchMove={this.touchHotMove}
                 onTouchEnd={this.touchEnd}
@@ -585,23 +607,23 @@ class Index extends Component {
                 onScrollToLower={this.onReachBottom}
                 scrollWithAnimation={scrollAnimation}>
                 <View className="tab-content">
-                  {hotList.map((item, index) => {
+                {
+                  hotList.map((item, index) => {
                     return (
-                      <View className="at-row tab-content-hot" key={index}>
-
+                      <View className="at-row tab-content-hot" key={index} >>
                         <View className="at-col at-col-1">
-                          <Text className={'hot-index ' + (index < 3 ? 'hot-index-hot' : '')}>
+                          <Text className={'hot-index ' + (index < 2 ? 'hot-index-hot' : '')}>
                             {index + 1}
                           </Text>
                         </View>
-
                         <View className="at-col at-col-12 at-col--wrap">
-                          <Text className="hot-title">{item.title}</Text>
+                          <Text className="hot-title" data-id={item.Questions_id} data-title={item.quetionTitle} onClick={this.goTitleDetail}>
+                            {item.quetionTitle}
+                          </Text>
                           <View className="hot-footer-text">
-                            <Text>{item.comment + '回答 · ' + item.focus + '关注'}</Text>
+                            <Text>{ Math.floor(Math.random()*1000) + '回答 · ' + Math.floor(Math.random()*1000) + '关注'}</Text>
                           </View>
                         </View>
-                        
                       </View>
                     );
                   })}
