@@ -68,3 +68,19 @@
 .hide {
   display: none;
 }
+
+
+page {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+}
+.card1 {
+
+}
+
+.container {
+  margin-top: 20px;
+}

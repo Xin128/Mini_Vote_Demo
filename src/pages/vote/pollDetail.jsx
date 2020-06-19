@@ -1,7 +1,9 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, AtInput, AtButton } from '@tarojs/components'
+import { AtLoadMore, AtAvatar, AtTag, AtDivider, AtRadio, AtCountdown,AtIcon  } from 'taro-ui'
 import './pollDetail.scss'
-import {questionLst, userList} from '../data/question.js';
+import { questionLst, userList } from '../data/question.js';
+
 
 export default class Polldetail extends Component {
 
@@ -29,11 +31,12 @@ export default class Polldetail extends Component {
     that.setState((state, props) => {
       let n = [...state.options]
       n[parseInt(e.currentTarget.id)][1] += 1
-      return { 
-              totalVotes:this.state.totalVotes+1,
-              comment: n, 
-              answered: true, 
-              selected: parseInt(e.currentTarget.id)};
+      return {
+        totalVotes: this.state.totalVotes + 1,
+        comment: n,
+        answered: true,
+        selected: parseInt(e.currentTarget.id)
+      };
     });
   }
 
@@ -51,11 +54,11 @@ export default class Polldetail extends Component {
     var qId = options.question_id;
     var qInfo = questionLst[qId];
     this.setState({
-      questionId:qId,
+      questionId: qId,
       questionTitle: qInfo.quetionTitle,
-      detailedInfo : qInfo.detailedInfo,
+      detailedInfo: qInfo.detailedInfo,
     })
-   }
+  }
 
   componentWillUnmount() { }
 
@@ -68,50 +71,52 @@ export default class Polldetail extends Component {
   }
 
   render() {
-    const {
-      questionId,
-      questionTitle,
-      detailedInfo
-    } = this.state;
+
 
     return (
-      <View className='container'>
-        <Text> {questionTitle} </Text>
-        <Text> {detailedInfo} </Text>
-        <View className='options-list'>
-          {this.state.options.map((item, index) => {
-            return (
-              <View className="option-li" id={index} onClick={this.chooseVote.bind(this)}>
-                <View className="image-box"></View>
-                <View className="option-content-wrapper">
-                  <View className={"percentage-bar " + (this.state.answered ? 'show' : 'hide') 
-                  + (this.state.selected == parseInt(index) ? ' selected' : ' unselected')} 
-                  style={{ width: item[1] / this.state.totalVotes * 100 + "%" }}>
-                  </View>
-                  <View className="desc">
-                    <View className="option-text">{item[0]}</View>
-                    <View className={"option-vote " + (this.state.answered ? 'show' : 'hide')}>{item[1]} votes</View>
-                  </View>
-                  <View className={"vote-percentage " + (this.state.answered ? 'show' : 'hide')}> {item[1] / this.state.totalVotes * 100 + "%"}</View>
-                </View>
-              </View>)
-          })}
+      <View className='at-article'>
+        <View className='at-article__h1'>
+          {questionTitle}
         </View>
-        {/* <View className='comments-list'>
-          {this.state.comments.map((item, index) => {
-            return (
-              <View className="comment-li" id={index} onClick={this.upvoteComment.bind(this)}>
 
-              </View>
-            )
-          })}
-        </View> */}
-     
+
+        <View className='at-article__p at-row at-row__align--end at-row__justify--between'>
+          <View className='at-col '>
+          <AtIcon value='user' size='30' ></AtIcon>           
+          </View>
           
+          <View className='at-col'>
+            <AtCountdown
+              isCard
+              isShowDay
+              day={2}
+              hours={1}
+              minutes={2}
+            />
+          </View>
 
+        </View>
+
+        <View className='at-article__content'>
+
+          <View className='at-article__section'>
+
+            <View className='at-article__p'>
+              {detailedInfo}
+            </View>
+          </View>
+          <AtDivider  height='20'/>
+          <AtRadio
+        options={[
+          { label: '单选项1', value: 'option1', desc: '单选项描述' },
+          { label: '单选项2', value: 'option2' },
+          { label: '单选项3', value: 'option2' },
+        ]}
+        value={0}
+        onClick={e => console.log(e)}
+      />
+        </View>
       </View>
-
-
     )
   }
 }

@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro';
 import { Block, View, Image, Text, Input, Textarea, ScrollView } from '@tarojs/components';
-import { AtTabs, AtTabsPane, AtActivityIndicator, AtLoadMore } from 'taro-ui';
+import { AtTabs, AtTabsPane, AtActivityIndicator, AtLoadMore, AtFab } from 'taro-ui';
 //import { getFocusData, getRcmdData, getHotData } from '@/api/index';
 //import SearchInput from '@/components/searchInput/index';
 import './index.scss';
@@ -365,6 +365,13 @@ class Index extends Component {
       url:'../../pages/vote/pollDetail?question_id='+event.target.dataset.id
     });
   };
+
+  onFabPublish = event => {
+    Taro.navigateTo({
+      url:'../../pages/vote/voteForRedirect'
+    });
+  };
+
   goContentDetail = event => {
     Taro.navigateTo({
       url:
@@ -413,7 +420,7 @@ class Index extends Component {
       userdb,
       questiondb
     } = this.state;
-    const tabList = [{ title: '推荐' }, { title: '热榜' }];
+    const tabList = [{ title: '热榜' }, { title: '推荐' }];
     const Threshold = 50;
     const scrollAnimation = true;
     userdb.limit(2).get().then(res=>{
@@ -423,9 +430,6 @@ class Index extends Component {
       });
     return (
       <View className="container">
-        <View>
-          <Button onclick={this.addData.bind(this)} >测试数据库</Button>
-        </View>
         <View className="search-wrap">
           {/* 搜索栏 */}
           {/* <SearchInput
@@ -511,7 +515,7 @@ class Index extends Component {
               )} */}
             {/* </View> */}
           {/* </AtTabsPane> */}
-          {/* 推荐内容 */}
+          {/* 热榜内容 */}
           <AtTabsPane current={isActive} index={0}>
             <View className="dragUpdatePage">
               <View className="downDragBox" style={downPullStyle}>
@@ -521,83 +525,6 @@ class Index extends Component {
                 style={dragStyle}
                 scrollY={scrollY}
                 className={'tab-container ' + (isActive == 0 ? 'show' : 'hide')}
-                upperThreshold={Threshold}
-                lowerThreshold={Threshold}
-                onTouchStart={this.touchStart}
-                onTouchMove={this.touchRecMove}
-                onTouchEnd={this.touchEnd}
-                onScrollToUpper={this.getRecommendList}
-                onScrollToLower={this.onReachBottom}
-                scrollWithAnimation={scrollAnimation}>
-                <View className="tab-content">
-                  {recList.map((item, index) => {
-                    return (
-                      <View className="tab-content-recommend" key={index}>
-                        <View className="content-category">
-                          <Image className="category-avatar" src={item.avatar} />
-                          <Text className="category-title">{item.author}</Text>
-                        </View>
-                        <View
-                          className="recommend-title"
-                          data-id={item.id}
-                          onClick={this.goTitleDetail}>
-                          {item.title}
-                        </View>
-                        <View
-                          className="recommend-content"
-                          data-id={item.id}
-                          data-title={item.title}
-                          data-avatar={item.avatar}
-                          data-content={item.fineAnswer.content}
-                          data-like={item.fineAnswer.like}
-                          data-time={item.fineAnswer.time}
-                          data-comment={item.fineAnswer.comment}
-                          onClick={this.goContentDetail}>
-                          {item.fineAnswer.content}
-                        </View>
-                        <View className="recommend-footer">
-                          <View className="recommend-footer-text">
-                            <Text>
-                              {item.fineAnswer.like +
-                                (item.from == 'live' ? '感兴趣' : '赞同') +
-                                ' · ' +
-                                item.fineAnswer.comment +
-                                (item.from == 'live' ? '人参与' : '评论')}
-                            </Text>
-                            {item.from && <Text>{'· ' + footerTip[item.from]}</Text>}
-                          </View>
-                        </View>
-                      </View>
-                    );
-                  })}
-                </View>
-                <View className="upDragBox">
-                  <AtLoadMore
-                    status={status}
-                    moreText="查看数据"
-                    loadingText="数据加载中..."
-                    noMoreText="没有更多了"
-                    noMoreTextStyle={{
-                      border: 'none'
-                    }}
-                    moreBtnStyle={{
-                      border: 'none'
-                    }}
-                  />
-                </View>
-              </ScrollView>
-            </View>
-          </AtTabsPane>
-          {/* 热榜内容 */}
-          <AtTabsPane current={isActive} index={1}>
-            <View className="dragUpdatePage">
-              <View className="downDragBox" style={downPullStyle}>
-                <AtActivityIndicator content={downPullText} />
-              </View>
-              <ScrollView
-                style={dragStyle}
-                scrollY={scrollY}
-                className={'tab-container ' + (isActive == 1 ? 'show' : 'hide')}
                 onTouchStart={this.touchStart}
                 onTouchMove={this.touchHotMove}
                 onTouchEnd={this.touchEnd}
@@ -645,7 +572,89 @@ class Index extends Component {
               </ScrollView>
             </View>
           </AtTabsPane>
+              {/* 推荐内容 */}
+          <AtTabsPane current={isActive} index={1}>
+          <View className="dragUpdatePage">
+            <View className="downDragBox" style={downPullStyle}>
+              <AtActivityIndicator content={downPullText} />
+            </View>
+            <ScrollView
+              style={dragStyle}
+              scrollY={scrollY}
+              className={'tab-container ' + (isActive == 1 ? 'show' : 'hide')}
+              upperThreshold={Threshold}
+              lowerThreshold={Threshold}
+              onTouchStart={this.touchStart}
+              onTouchMove={this.touchRecMove}
+              onTouchEnd={this.touchEnd}
+              onScrollToUpper={this.getRecommendList}
+              onScrollToLower={this.onReachBottom}
+              scrollWithAnimation={scrollAnimation}>
+              <View className="tab-content">
+                {recList.map((item, index) => {
+                  return (
+                    <View className="tab-content-recommend" key={index}>
+                      <View className="content-category">
+                        <Image className="category-avatar" src={item.avatar} />
+                        <Text className="category-title">{item.author}</Text>
+                      </View>
+                      <View
+                        className="recommend-title"
+                        data-id={item.id}
+                        onClick={this.goTitleDetail}>
+                        {item.title}
+                      </View>
+                      <View
+                        className="recommend-content"
+                        data-id={item.id}
+                        data-title={item.title}
+                        data-avatar={item.avatar}
+                        data-content={item.fineAnswer.content}
+                        data-like={item.fineAnswer.like}
+                        data-time={item.fineAnswer.time}
+                        data-comment={item.fineAnswer.comment}
+                        onClick={this.goContentDetail}>
+                        {item.fineAnswer.content}
+                      </View>
+                      <View className="recommend-footer">
+                        <View className="recommend-footer-text">
+                          <Text>
+                            {item.fineAnswer.like +
+                              (item.from == 'live' ? '感兴趣' : '赞同') +
+                              ' · ' +
+                              item.fineAnswer.comment +
+                              (item.from == 'live' ? '人参与' : '评论')}
+                          </Text>
+                          {item.from && <Text>{'· ' + footerTip[item.from]}</Text>}
+                        </View>
+                      </View>
+                    </View>
+                  );
+                })}
+              </View>
+              <View className="upDragBox">
+                <AtLoadMore
+                  status={status}
+                  moreText="查看数据"
+                  loadingText="数据加载中..."
+                  noMoreText="没有更多了"
+                  noMoreTextStyle={{
+                    border: 'none'
+                  }}
+                  moreBtnStyle={{
+                    border: 'none'
+                  }}
+                />
+              </View>
+            </ScrollView>
+          </View>
+        </AtTabsPane>
         </AtTabs>
+        <View className="floatButton">
+          <AtFab onClick={this.onFabPublish.bind(this)}>
+            <Text className='at-fab__icon at-icon at-icon-edit'></Text>
+          </AtFab>
+        </View>
       </View>
     );
   }
