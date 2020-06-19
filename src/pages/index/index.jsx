@@ -3,6 +3,7 @@ import { Block, View, Image, Text, Input, Textarea, ScrollView } from '@tarojs/c
 import { AtTabs, AtTabsPane, AtActivityIndicator, AtLoadMore, AtFab } from 'taro-ui';
 //import { getFocusData, getRcmdData, getHotData } from '@/api/index';
 //import SearchInput from '@/components/searchInput/index';
+import { showSuccess } from '@/utils/index';
 import './index.scss';
 import {questionLst, userList} from '../data/question.js';
 

@@ -1,0 +1,47 @@
+<block wx:if="{{$taroCompReady}}">
+    <view>
+        <at-card compid="{{$compid__76}}">
+            <at-input compid="{{$compid__77}}"></at-input>
+            <at-textarea compid="{{$compid__78}}"></at-textarea>
+            <view class="optionWrapper">
+                <view class="optionButton">
+                    <at-button compid="{{$compid__79}}">Yes</at-button>
+                </view>
+                <view class="optionText">
+                    <at-input compid="{{$compid__80}}"></at-input>
+                </view>
+            </view>
+            <view class="optionWrapper">
+                <view class="optionButton">
+                    <at-button compid="{{$compid__81}}">No</at-button>
+                </view>
+                <view class="optionText ">
+                    <at-input compid="{{$compid__82}}"></at-input>
+                </view>
+            </view>
+            <view class="imageBox">
+                <view class="image">
+                    <at-image-picker compid="{{$compid__83}}"></at-image-picker>
+                </view>
+            </view>
+            <view class="at-row">
+                <view class="at-col at-col__offset-1">
+                    <at-button compid="{{$compid__84}}">Vote时间设置</at-button>
+                </view>
+                <view class="at-col at-col__offset-2">
+                    <at-button compid="{{$compid__85}}">Vote人数设置</at-button>
+                </view>
+            </view>
+            <view class="settingArea">
+                <view class="checkedSetting">
+                    <at-checkbox compid="{{$compid__86}}"></at-checkbox>
+                </view>
+                <view class="checkedSetting">
+                    <view margin="auto auto">
+                        <at-button compid="{{$compid__87}}">发布</at-button>
+                    </view>
+                </view>
+            </view>
+        </at-card>
+    </view>
+</block>

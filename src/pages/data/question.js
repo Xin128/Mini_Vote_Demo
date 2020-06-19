@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import Taro, { Component } from '@tarojs/taro';
+=======
+>>>>>>> 27409ad5bb0099fd6926c6c869b16e2f5fdb9b0e
 var questionLst = [
     // {
     //     "Questions_id": "要求同user_id",
@@ -16,6 +19,7 @@ var questionLst = [
     //     "dateAsked": "评论时间：最少精确到小时 format：“2017-02-08T12:10:40.787”  时间和分钟可以写成00",
     //     "timeLimit": "format: 00:01:30  表示零天一个小时30min"
     // },
+<<<<<<< HEAD
     {"Questions_id": "0",
         "quetionTitle": "在纽约开车方便吗",
         "detailedInfo": "研究生决定去哥大了，但是本科时候在农村买了辆车，听说纽约用车很不方便，所以想问一下去纽约需要把车卖了吗",
@@ -26,6 +30,9 @@ var questionLst = [
         "timeLimit": "0:07:00",
         "asked_User_id": "4"
     },
+=======
+    { "Questions_id": "0"},
+>>>>>>> 27409ad5bb0099fd6926c6c869b16e2f5fdb9b0e
     {
         "Questions_id": "1",
         "quetionTitle": "疫情期间，留学生要不要回国？",
@@ -594,4 +601,8 @@ var userList =[
 const _userList = userList;
 export { _userList as userList };
 const _questionLst = questionLst;
+<<<<<<< HEAD
 export { _questionLst as questionLst };
+=======
+export { _questionLst as questionLst };
+>>>>>>> 27409ad5bb0099fd6926c6c869b16e2f5fdb9b0e
