@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text, AtInput, AtButton } from '@tarojs/components'
-import { AtLoadMore, AtAvatar, AtTag, AtDivider, AtRadio, AtCountdown,AtIcon  } from 'taro-ui'
+import { View, Text,  Textarea } from '@tarojs/components'
+import { AtCard, AtInput, AtLoadMore, AtAvatar, AtTag, AtDivider, AtRadio, AtCountdown,AtIcon, AtButton, AtTextarea, AtCheckbox, AtProgress  } from 'taro-ui'
 import './pollDetail.scss'
 import { questionLst, userList } from '../data/question.js';
 
@@ -10,19 +10,66 @@ export default class Polldetail extends Component {
   constructor() {
     super(...arguments);
     this.state = {
+
+      options: [{
+        value: '1',
+        label: 'iPhone X',
+        desc: '部分地区提供电子普通发票。',
+        votes: 1
+      },{
+        value: '2',
+        label: 'HUAWEI P20',
+        desc: '部分地区提供电子普通发票。',
+        votes: 3
+      },{
+        value: '3',
+        label: 'HUAWEI P20',
+        desc: '部分地区提供电子普通发票。',
+        votes: 2
+      }],
+      singleOptionSelected: '0',
+      multipleOptionSelected: [],
+      hasVoted: false,
       questionId: 3,
       questionTitle: "",
       detailedInfo: "",
-      options: [["应该", 3], ["不应该", 6], ["不知道", 1]],
-      totalVotes: 10,
+      totalUserVoted: 4,
       questionStatus: 1,
-      comment: [["bi xu dei shua", 1], ["bie lang fei shi jian", 0], ["tong wen", 1]],
-      dateAsked: "2020-05-22T18:03:20.002",
+      comments: 
+      {
+        '0': {
+            'userID00001': {
+              username: 'usernaem1',
+              content: 'i like both but 1 is better',
+              date: '2019-01-01',
+              upvotes: ['userid2, userid3, userid4'],
+            },
+            'userID00002': {
+              username: 'username2',
+              content: 'i like both but 1 is better',
+              date: '2019-01-01',
+              upvotes: ['userid2, userid3, userid4'],
+            }
+        },
+        '1': {
+          'userID00001': {
+            content: 'i like both but 1 is better',
+            date: '2019-01-01',
+            upvotes: ['userid2, userid3, userid4'],
+          },
+          'userID00002': {
+            content: 'i like both but 1 is better',
+            date: '2019-01-01',
+            upvotes: ['userid2, userid3, userid4'],
+          }
+        }
+      },
+      dateAsked: "2020-05-22",
       timeLimit: "00.02.00",
       askedUserId: 6,
       answered: false,
-      selected: -1,
-      ownComment: ""
+      ownComment: "",
+      allowMultiple: false
     }
   }
 
@@ -38,6 +85,9 @@ export default class Polldetail extends Component {
         selected: parseInt(e.currentTarget.id)
       };
     });
+  }
+  hasValidSelection = () => {
+    return true
   }
 
   submitOwnComment = e => {
@@ -69,20 +119,36 @@ export default class Polldetail extends Component {
   config = {
     navigationBarTitleText: '首页'
   }
+  handleChangeMultiple = e => {
+    console.log(e)
+    this.setState({multipleOptionSelected: e})
+  }
+  handleClickSingle = e => {
+
+    this.setState({singleOptionSelected: e[0]})
+
+  }
+  handleSubmit = e => {
+    this.setState({hasVoted:true})
+  }
 
   render() {
 
 
     return (
-      <View className='at-article'>
-        <View className='at-article__h1'>
-          {questionTitle}
-        </View>
-
-
-        <View className='at-article__p at-row at-row__align--end at-row__justify--between'>
+      <View>
+      <AtCard 
+      title={this.state.askedUserId + '的投票'}
+      thumb='http://www.logoquan.com/upload/list/20180421/logoquan15259400209.PNG'
+      >
+       <Text className='questionTitle'>
+         {this.state.questionTitle}
+       </Text>
+       <View className='at-row at-row__align--end at-row__justify--between'>
           <View className='at-col '>
-          <AtIcon value='user' size='30' ></AtIcon>           
+          <Text className='dateAsked'>
+         {this.state.dateAsked}
+       </Text>
           </View>
           
           <View className='at-col'>
@@ -96,26 +162,68 @@ export default class Polldetail extends Component {
           </View>
 
         </View>
-
-        <View className='at-article__content'>
-
-          <View className='at-article__section'>
-
-            <View className='at-article__p'>
-              {detailedInfo}
-            </View>
-          </View>
-          <AtDivider  height='20'/>
-          <AtRadio
-        options={[
-          { label: '单选项1', value: 'option1', desc: '单选项描述' },
-          { label: '单选项2', value: 'option2' },
-          { label: '单选项3', value: 'option2' },
-        ]}
-        value={0}
-        onClick={e => console.log(e)}
+        <AtTextarea className='detailedInfo'
+        value={this.state.detailedInfo} maxLength={200} 
+        count={false}
+        height={300}
+        disabled>
+        </AtTextarea>
+      
+        <View className={'single ' + (!this.state.allowMultiple && !this.hasVoted ? 'show' : 'hide')}>
+        <AtRadio
+        options={this.state.options}
+        onClick={this.handleClickSingle.bind(this)}
+        value={this.state.singleOptionSelected}
+      />
+       </View>
+        <View className={'multiple ' + (this.state.allowMultiple && !this.hasVoted ? 'show' : 'hide')}>
+        <AtCheckbox
+        options={this.state.options}
+        selectedList={this.state.multipleOptionSelected}
+        onChange={this.handleChangeMultiple.bind(this)}
       />
         </View>
+        <AtButton 
+          type='primary' 
+          className={'voteButton ' + (!this.state.hasVoted ? 'show' : 'hide')}
+          onClick={this.handleSubmit.bind(this)}
+          disabled={!this.hasValidSelection() }
+        >
+          提交
+        </AtButton>
+        <View className={'percentages ' + (this.state.hasVoted ? 'show' : 'hide')}>
+        {this.state.options.map((value) => {
+          return (<View>
+            <Text>
+              {value.label}
+            </Text>
+            <AtProgress percent={value.votes*100/this.state.totalUserVoted} />
+          </View>)
+        })}
+        </View>
+        <View className={'comments ' + (this.state.hasVoted ? 'show' : 'hide')}>
+        {Object.entries(this.state.comments).map(x=> {
+          return (<AtCard
+            extra={Object.keys(x[1]).length + '条'}
+            title={'支持'+this.state.options[x[0]].label+'的评论'}
+          >
+            {Object.values(x[1]).map(value => {
+              return (
+                <View className='comment'>
+                    <Text>{value.content}</Text>
+                    <Text>{value.date}</Text>
+                    <Text>{value.upvotes.length + '个人对这条评论点了赞（等下替换成icon）'}</Text>
+                    <AtDivider></AtDivider>
+                </View>
+              )
+            })}
+          </AtCard>)
+        })}
+        </View>
+
+        
+
+      </AtCard>
       </View>
     )
   }
