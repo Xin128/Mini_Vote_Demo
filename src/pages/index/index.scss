@@ -125,6 +125,25 @@ page {
   display: none;
 }
 
+.banner{
+  width: 90%;
+  height: 250px;
+  left:50%;
+  top:50%;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.image-banner{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  height:250px;
+  width: 90%;
+}
 /* tab标题*/
 .tab-wrap {
   max-width: 750px;
@@ -132,7 +151,7 @@ page {
   border-top: 1px solid #f6f6f6;
   border-bottom: 1px solid #f6f6f6;
   position: fixed;
-  top: 100px;
+  top: 270px;
   left: 0px;
   z-index: -1;
 }

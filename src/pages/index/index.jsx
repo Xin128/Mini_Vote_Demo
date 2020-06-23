@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
-import { Block, View, Image, Text, Input, Textarea, ScrollView } from '@tarojs/components';
+import { Block, View, Image, Text, Input, Textarea, ScrollView, Swiper, SwiperItem } from '@tarojs/components';
 import { AtTabs, AtTabsPane, AtActivityIndicator, AtLoadMore, AtFab } from 'taro-ui';
 //import { getFocusData, getRcmdData, getHotData } from '@/api/index';
 //import SearchInput from '@/components/searchInput/index';
@@ -12,13 +12,12 @@ class Index extends Component {
   
   constructor() {
     super(...arguments);
-    console.log("start to retrieve data from db");
-    const db = Taro.cloud.database()
-    db.collection('Users').
-    add({data:{
-      userId:"83",
-      userName:"testUser just for test"
-    }})
+    // const db = Taro.cloud.database()
+    // db.collection('Users').
+    // add({data:{
+    //   userId:"83",
+    //   userName:"testUser just for test"
+    // }})
 
     this.state = {
       isShow: false,
@@ -28,11 +27,6 @@ class Index extends Component {
       focusList: [],
       recList: [],
       hotList: questionLst,
-      // hotList: [{id: 5, title:"short title", image:["http://dummyimage.com/300x200/7994f2"],comment:44,focus:390},
-      // {id: 5, title:"averylongword averylongword averylongword averylongword", image:["http://dummyimage.com/300x200/7994f2"],comment:44,focus:390},
-      // {id: 5, title:"this is not a title this is not a title this is not a title this is not a title", image:[],comment:44,focus:390},
-      // {id: 5, title:"this is not a title this is not a title this is not a title this is not a title this is not a title this is not a title this is not a title this is not a title", image:[],comment:44,focus:390}],
-      // 
       footerTip: {
         topic: '去文章列表',
         question: '关注话题',
@@ -367,6 +361,12 @@ class Index extends Component {
     });
   };
 
+  goBannerDetail = event => {
+    Taro.navigateTo({
+      url:'../../pages/article/article'
+    });
+  };
+
   onFabPublish = event => {
     Taro.navigateTo({
       url:'../../pages/vote/voteForRedirect'
@@ -431,92 +431,28 @@ class Index extends Component {
       });
     return (
       <View className="container">
-        <View className="search-wrap">
-          {/* 搜索栏 */}
-          {/* <SearchInput
-            ref="searchRef"
-            show={isShow}
-            value={searchVal}
-            showMack={this.showMack.bind(this)}
-            hideMask={this.hideMask.bind(this)}
-          /> */}
-          {/* 提问 */}
-          <View className="search-button">
-            <Image className="search-button-icon" src={require('../../assets/images/edit.png')} />
-            <Text className="search-button-text" onClick={this.showQuesMask}>
-              提问
-            </Text>
-          </View>
-        </View>
-        {/*  提问   */}
-        <View className={'question-mask ' + (isShowQues ? 'show' : 'hide')}>
-          <View className="question-input-wrap">
-            <View className="question-title-wrap">
-              <View className="question-mask-cancel" onClick={this.hideQuesMask}>
-                取消
-              </View>
-              <Text className="mask-title">提问</Text>
-              <View className="question-mask-next">下一步</View>
-            </View>
-            <Input
-              className="question-mask-input"
-              placeholderStyle="color: #cdcdcd"
-              placeholder="输入问题并以问号结尾"
-              type="text"
-            />
-            <Textarea
-              className="quesion-mask-text"
-              placeholderStyle="color: #cdcdcd"
-              placeholder="问题描述(选填)"
-              autoFocus="true"
-            />
-          </View>
-        </View>
-        {/*  提问end   */}
+          <Swiper 
+          className='banner'
+          indicatorColor='#999' 
+          indicatorActiveColor='#333'
+          interval='2000'
+          vertical={false} circular
+          autoplay>
+            <SwiperItem onClick={this.goBannerDetail}>
+              <Image className='image-banner' src='../../assets/images/banner_fatherDay.png' mode='scaleToFill'>
+              </Image>
+            </SwiperItem>
+            <SwiperItem onClick={this.goBannerDetail}>
+              <Image className='image-banner' src='../../assets/images/banner_woman.png' mode='scaleToFill'>
+              </Image>
+            </SwiperItem>
+            <SwiperItem onClick={this.goBannerDetail}>
+              <Image className='image-banner' src='../../assets/images/banner_Volts.png' mode='scaleToFill'>
+              </Image>
+            </SwiperItem>
+          </Swiper>
         {/*  tabs标签页 begin   */}
         <AtTabs className="tab-wrap" current={isActive} tabList={tabList} onClick={this.setActive}>
-          {/* <AtTabsPane current={isActive} index={0}> */}
-            {/* 关注内容 */}
-            {/* <View className={'tab-content ' + (isActive == 0 ? 'show' : 'hide')}> */}
-              {/* {focusList.length > 0 && (
-                <Block>
-                  {focusList.map((item, index) => {
-                    return (
-                      <View className="tab-content-focus" key={index}>
-                        <View className="content-category">
-                          <Image className="category-avatar" src={item.avatar} />
-                          <Text className="category-title">{item.category}</Text>
-                        </View>
-                      </View>
-                    );
-                  })}
-                </Block>
-              )}
-              {focusList.length == 0 && (
-                <View>
-                  <Image
-                    className="to-recommend-img"
-                    src={require('../../assets/images/to-recommend.png')}
-                  />
-                  <View className="to-recommend-title">还没关注的人</View>
-                  <View className="to-recommend-tip">去【推荐】看看吧</View>
-                </View>
-              )}
-              {/* TODO: 以下注释暂时不能去掉 */}
-              {/* {focusList.length != 0 && (
-                <View className="load-more" onClick={this.getMorefocusList}>
-                  {isLoading && (
-                    <Image
-                      className="is-loading"
-                      src={require('../../assets/images/loading.gif')}
-                    />
-                  )}
-                  {loadMore}
-                </View>
-              )} */}
-            {/* </View> */}
-          {/* </AtTabsPane> */}
-          {/* 热榜内容 */}
           <AtTabsPane current={isActive} index={0}>
             <View className="dragUpdatePage">
               <View className="downDragBox" style={downPullStyle}>

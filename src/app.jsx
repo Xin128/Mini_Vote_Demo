@@ -33,7 +33,8 @@ class App extends Component {
       'pages/vote/vote',
       'pages/vote/voteForRedirect',
       'pages/userCenter/userCenter',
-      'pages/vote/pollDetail'
+      'pages/vote/pollDetail',
+      'pages/article/article'
 
     ],
     window: {
@@ -57,8 +58,8 @@ class App extends Component {
         {
           pagePath: 'pages/vote/vote',
           text: '发布',
-          iconPath: 'assets/images/auth-icon.png',
-          selectedIconPath: 'assets/images/auth-icon.png'
+          iconPath: 'assets/images/find.png',
+          selectedIconPath: 'assets/images/find-light.png'
         },
         {
           pagePath: 'pages/userCenter/userCenter',

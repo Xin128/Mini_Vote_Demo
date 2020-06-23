@@ -50,8 +50,6 @@ export default class Usercenter extends Component {
     })
   }
   selectAskedQuestions(userId) {
-    // var lst = questionLst.filter(item => 
-    //   parseInt(item.asked_User_id) == userId);
     return userList[userId].askekQuestionID.slice(1,-1).split(",").map(queID => questionLst[parseInt(queID)]);
   }
 
