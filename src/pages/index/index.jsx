@@ -6,7 +6,10 @@ import { AtTabs, AtTabsPane, AtActivityIndicator, AtLoadMore, AtFab } from 'taro
 import { showSuccess } from '@/utils/index';
 import './index.scss';
 import {questionLst, userList} from '../data/question.js';
+import pageInit from '../../utils/pageInit'
 
+
+@pageInit()
 
 class Index extends Component {
   
