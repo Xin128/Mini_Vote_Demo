@@ -26,7 +26,7 @@ export default class Vote extends Component {
       options: ["",""],
       detailedInfo: "",
       files: [],
-      timeLimit:"",
+      openTimeLimit: false,
       peopleRequired:100,
       checkedSettings:["anonymous","visile"]
     }
@@ -70,12 +70,17 @@ export default class Vote extends Component {
     })
   }
 
-  onTimeSettingChange(value) {
+  openTimeLimitSetting() {
     this.setState({
-      timeLimit
+      openTimeLimit:true
     })
   }
 
+  closeTimeLimitSetting() {
+    this.setState({
+      openTimeLimit:false
+    })
+  }
   onNumPeopleRequiredChange(value) {
     this.setState({
       peopleRequired
@@ -96,6 +101,9 @@ export default class Vote extends Component {
   }
 
   render () {
+    const {
+      openTimeLimit
+    } = this.state;
     return (
       <View>
       <AtCard title='提出我的问题'>
@@ -163,10 +171,15 @@ export default class Vote extends Component {
               type='primary' 
               circle
               size='small' 
-              onClick={this.onTimeSettingChange.bind(this)}
+              onClick={this.openTimeLimitSetting.bind(this)}
             >
               Vote时间设置  
               </AtButton>
+          </View>
+          <View className={'timeLimit'+ openTimeLimit ? 'show' :'hide'}>
+            <AtFloatLayout isOpened={openTimeLimitSetting} title="自定义时间长度" onClose={this.closeTimeLimitSetting.bind(this)}>
+    
+            </AtFloatLayout>
           </View>
           <View className='at-col at-col__offset-2'>
             <AtButton 

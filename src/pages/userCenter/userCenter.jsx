@@ -33,10 +33,12 @@ export default class Usercenter extends Component {
   }
 
   handleEdit() {
+    console.log("test on clike");
     this.setState({
       openEdit: true
     })
   }
+
 
   changeDetailedInfo (value) {
     this.setState({
@@ -102,9 +104,10 @@ export default class Usercenter extends Component {
                 </AtIcon>
                 </View>
                 <View className="userinfo-tip"> 
-                    <Text> {detailedInfo}
-                    </Text>
-                  </View>
+                  <Text> {detailedInfo} </Text>
+                </View>
+                <Image  className="image-volts" src="../../assets/images/lighting.jpg" mode='scaleToFill'></Image>
+
               </View>
             </View>
           </View>
@@ -129,6 +132,8 @@ export default class Usercenter extends Component {
                       title={item.quetionTitle}
                       arrow='right'
                       thumb='https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png'
+                      onclick={() => this.handleClickQuestion}
+                      // 这里不管我怎么call onclick 都不work
                   />);
                   })
                   // )
@@ -149,6 +154,12 @@ export default class Usercenter extends Component {
                       title={item.quetionTitle}
                       arrow='right'
                       thumb='https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png'
+                      onclick={e => {
+                        console.log("click!");
+                        Taro.navigateTo({
+                        url:'../../pages/vote/pollDetail?question_id='+item.Questions_id
+                      })}}
+                      // 这样写也没有用
                   />);
                   })
                   )
