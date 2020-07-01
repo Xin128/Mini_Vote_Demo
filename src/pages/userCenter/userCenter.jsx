@@ -4,7 +4,7 @@ import { Block, View, Text } from '@tarojs/components'
 import './userCenter.scss'
 import {questionLst, userList} from '../data/question.js';
 
-export default class Usercenter extends Component {
+class Usercenter extends Component {
   constructor() {
     super(...arguments);
     this.state = {
@@ -21,16 +21,23 @@ export default class Usercenter extends Component {
 
 
 
-  handleClickQuestion (value) {
+  handleClickQuestion = (value) => {
+    console.log("handle click question");
     this.setState({
       openQuestion: value
     })
   }
-  handleClickVote (value) {
+  handleClickVote = (value) => {
+    console.log("handle click vote");
     this.setState({
       openVote: value
     })
   }
+  handleNavigate = e => {
+    console.log("handle navigate");
+    Taro.navigateTo({
+    url:'../../pages/vote/pollDetail?question_id='+item.Questions_id
+  })}
 
   handleEdit() {
     console.log("test on clike");
@@ -79,8 +86,12 @@ export default class Usercenter extends Component {
     navigationBarTitleText: '我的'
   }
 
+
     
   render () {
+    let testFunction = () => {
+      console.log("test on clike");
+    }
     const {
       userInfo,
       userName,
@@ -100,7 +111,7 @@ export default class Usercenter extends Component {
                 <View className="userinfo-nickname">{userName}         
                 </View>
                 <View className="userinfo-pencil"> 
-                  <AtIcon value='edit' size='20' color='#11040470' onClick={this.handleEdit.bind(this)}>
+                  <AtIcon value='edit' size='20' color='#11040470' onClick={this.handleEdit}>
                 </AtIcon>
                 </View>
                 <View className="userinfo-tip"> 
@@ -120,50 +131,44 @@ export default class Usercenter extends Component {
 
           <View className="asked">
             <AtAccordion open={this.state.openQuestion}
-                        onClick={this.handleClickQuestion.bind(this)}
+                        onClick={this.handleClickQuestion}
                         title='我的问题'
-                        hasBorder='true'
+                        hasBorder={true}
            > 
             <AtList hasBorder={false}>
-            {/* {test.length > 0 && ( */}
-            {userAskedQuestion.map((item) => {
-                return (
-                  <AtListItem
-                      title={item.quetionTitle}
-                      arrow='right'
-                      thumb='https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png'
-                      onclick={() => this.handleClickQuestion}
-                      // 这里不管我怎么call onclick 都不work
-                  />);
-                  })
-                  // )
-                  }
+
+            {userAskedQuestion.map((item) => {
+              return (
+                <AtListItem
+                  title={item.quetionTitle}
+                  arrow='right'
+                  thumb='https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png'
+                  onClick={this.handleClickQuestion} />);
+            })}
+
+                 
             </AtList>
             </AtAccordion>
             <AtAccordion open={this.state.openVote}
-                        onClick={this.handleClickVote.bind(this)}
+                        onClick={this.handleClickVote}
                         title='我的投票'
-                        hasBorder='true'
+                        hasBorder={true}
             > 
             <AtList hasBorder={false}>
             {
             userVotedQuestion.length > 0 && (
-              userVotedQuestion.map((item) => {
-                return (
-                  <AtListItem
-                      title={item.quetionTitle}
-                      arrow='right'
-                      thumb='https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png'
-                      onclick={e => {
-                        console.log("click!");
-                        Taro.navigateTo({
-                        url:'../../pages/vote/pollDetail?question_id='+item.Questions_id
-                      })}}
-                      // 这样写也没有用
-                  />);
-                  })
+
+                  userVotedQuestion.map((item) => {
+                                  return (
+                                    <AtListItem
+                                      title={item.quetionTitle}
+                                      arrow='right'
+                                      thumb='https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png'
+                                      onClick={this.handleNavigate} />);
+                                })
                   )
                   }
+
             </AtList>
             </AtAccordion>
           </View>
